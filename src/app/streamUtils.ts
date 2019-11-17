@@ -1,0 +1,29 @@
+import {User} from './models/user';
+import {Video} from './models/video';
+
+export function updateStreamUrl(users: User[]): User[] {
+  return users.map(user => {
+      return {
+        ...user,
+        live: !!user.live ? {
+          ...user.live,
+          updatedThumbnailUrl: user.live.thumbnailUrl
+            .replace('{width}', '750')
+            .replace('{height}', '500')
+        } : null,
+      };
+    }
+  );
+}
+
+export function updateVideoUrl(videos: Video[]): Video[] {
+  return videos.map(video => {
+      return {
+        ...video,
+        updatedThumbnailUrl: video.thumbnailUrl
+          .replace('%{width}', '750')
+          .replace('%{height}', '500')
+      };
+    }
+  );
+}

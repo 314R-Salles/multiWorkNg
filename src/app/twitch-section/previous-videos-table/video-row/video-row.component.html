@@ -1,0 +1,12 @@
+<mat-grid-list cols="5" rowHeight="75px">
+  <a target="_blank" href={{video.url}}>
+    <mat-grid-tile matTooltip="Open video in new tab"
+                   *ngFor="let tile of tiles; let i = index"
+                   [ngClass]="classes[i]"
+                   [colspan]="tile.cols"
+                   [rowspan]="tile.rows"
+    >
+      <div *ngIf="tile.text" class="text">{{tile.text}}</div> <img style="max-height:100%;" *ngIf="i===2" src={{video?.updatedThumbnailUrl}}>
+    </mat-grid-tile>
+  </a>
+</mat-grid-list>

@@ -1,0 +1,18 @@
+<mat-card style="background: lightgrey">
+  <mat-card-title>
+    Video history:
+  </mat-card-title>
+
+  <ng-container *ngIf="videos?.length; else noResult">
+    <mat-card *ngFor="let video of videos" class="video">
+      <app-video-row [video]="video"></app-video-row>
+    </mat-card>
+  </ng-container>
+
+  <ng-template #noResult>
+    <mat-card>
+      Current user doesn't have any video available.
+    </mat-card>
+  </ng-template>
+
+</mat-card>
