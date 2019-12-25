@@ -1,0 +1,15 @@
+.header-menu {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-around;
+  height: var(--header-menu);
+
+  background: darkgrey;
+
+}
+
+
+.header-menu a {
+  text-decoration: none;
+}

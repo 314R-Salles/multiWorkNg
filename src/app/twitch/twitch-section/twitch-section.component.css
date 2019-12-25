@@ -1,0 +1,46 @@
+.twitch-page-container {
+  height: calc(100% - var(--header-menu));
+}
+
+.container {
+  display: flex;
+  height: calc(100% - var(--header-height));
+}
+
+.twitch-header {
+  padding: 5px;
+  background-color: darkgrey;
+  color: navajowhite;
+}
+
+.row {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-elements {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.left-elements > * {
+  margin-right: 10px;
+}
+
+.right-elements {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.element {
+  width: 50%;
+}
+
+.scroll {
+  overflow: hidden;
+  overflow-y: scroll;
+}

@@ -1,0 +1,25 @@
+::ng-deep .a {
+  white-space: pre-line !important;
+}
+
+.title {
+  height: var(--title);
+}
+
+.metrics-page-container {
+  width: calc(100% - 50px - 50px);
+  height: calc(100% - var(--header-menu) - 16px);
+  padding: 0 50px;
+}
+
+.table-scroll {
+  display: block;
+  width: 100%;
+  height: calc(100% - var(--title) - 16px - 16px - var(--paginator));
+  overflow: auto;
+}
+
+.mat-cell {
+  border: 1px solid #e0e0e0;
+  padding: 0 5px;
+}

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Action, Store} from '@ngrx/store';
-import {AppState, selectLastRefreshTime, selectLoggedUser, selectSubscriptions} from './twitch-section/twitch-store/twitch.reducer';
+import {AppState, selectLastRefreshTime, selectLoggedUser, selectSubscriptions} from './twitch/twitch-store/twitch.reducer';
 import {first, map} from 'rxjs/internal/operators';
 import {Observable} from 'rxjs/index';
-import {User} from './models/user';
+import {User} from './twitch/models/user';
 import * as moment from 'moment';
 
 @Injectable({

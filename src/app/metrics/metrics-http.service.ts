@@ -1,0 +1,22 @@
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/index';
+import {Bean} from './models/bean';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MetricsHttpService {
+  BASE_API = 'http://localhost:8080/';
+  TWITCH_API = '/actuators';
+  API_URL: string;
+
+  constructor(private http: HttpClient) {
+    this.API_URL = this.BASE_API + this.TWITCH_API;
+  }
+
+  getBeans(): Observable<Bean[]> {
+    return this.http.get<Bean[]>(this.API_URL + '/beans');
+  }
+
+}
