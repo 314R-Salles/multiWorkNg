@@ -5,6 +5,7 @@ import {HeaderMenuComponent} from './header-menu/header-menu.component';
 import {HomePageComponent} from '../home-page/home-page.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -14,12 +15,14 @@ import {RouterModule} from '@angular/router';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AngularMaterialModule,
     HttpClientModule,
     RouterModule,
   ],
   exports: [
     CommonModule,
+    FormsModule,
     AngularMaterialModule,
     HeaderMenuComponent,
     RouterModule
