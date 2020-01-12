@@ -6,12 +6,14 @@ import {HomePageComponent} from '../home-page/home-page.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {ProgressBarComponent} from './progress-bar/progress-bar.component';
 
 
 @NgModule({
   declarations: [
     HomePageComponent,
     HeaderMenuComponent,
+    ProgressBarComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import {FormsModule} from '@angular/forms';
     FormsModule,
     AngularMaterialModule,
     HeaderMenuComponent,
-    RouterModule
+    RouterModule,
+    ProgressBarComponent,
   ]
 })
 export class SharedModule {

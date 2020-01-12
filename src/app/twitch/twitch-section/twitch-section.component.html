@@ -11,6 +11,13 @@
           Update stream data
         </div>
         <div>Last refresh time : {{lastRefresh | date:'mediumTime'}}</div>
+        <app-progress-bar
+          [step]="1"
+          [steps]="5"
+          [value]="minutesToNow$ | async"
+          [colors]="['#4ab549', '#ffdf3a', '#ffb246', '#ca3b3b', '#843434']"
+          (trigger)="refreshSubscriptions()">
+        </app-progress-bar>
       </div>
     </div>
     <div class="row" *ngIf="!token">

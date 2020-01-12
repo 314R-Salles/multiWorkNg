@@ -8,11 +8,11 @@ import {Bean} from './models/bean';
 })
 export class MetricsHttpService {
   BASE_API = 'http://localhost:8080/';
-  TWITCH_API = '/actuators';
+  ACTUATORS_API = '/actuators';
   API_URL: string;
 
   constructor(private http: HttpClient) {
-    this.API_URL = this.BASE_API + this.TWITCH_API;
+    this.API_URL = this.BASE_API + this.ACTUATORS_API;
   }
 
   getBeans(): Observable<Bean[]> {

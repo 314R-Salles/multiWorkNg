@@ -1,10 +1,17 @@
 import {Injectable} from '@angular/core';
 import {Action, Store} from '@ngrx/store';
-import {AppState, selectLastRefreshTime, selectLoggedUser, selectSubscriptions} from './twitch/twitch-store/twitch.reducer';
+import {
+  AppState,
+  selectExtensions,
+  selectLastRefreshTime,
+  selectLoggedUser,
+  selectSubscriptions
+} from './twitch/twitch-store/twitch.reducer';
 import {first, map} from 'rxjs/internal/operators';
 import {Observable} from 'rxjs/index';
 import {User} from './twitch/models/user';
 import * as moment from 'moment';
+import {Extension} from './twitch/models/extension';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +61,19 @@ export class StoreService {
   spyOnLastRefreshTime(): Observable<moment.Moment> {
     return this.store.pipe(
       map((state: AppState) => selectLastRefreshTime(state))
+    );
+  }
+
+  getExtensions(): Observable<{ [id: string]: Extension[] }> {
+    return this.store.pipe(
+      first(),
+      map((state: AppState) => selectExtensions(state))
+    );
+  }
+
+  spyOnExtensions(): Observable<{ [id: string]: Extension[] }> {
+    return this.store.pipe(
+      map((state: AppState) => selectExtensions(state))
     );
   }
 

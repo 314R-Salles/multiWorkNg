@@ -11,11 +11,19 @@
 <ng-template #noStream>
   <mat-grid-list cols="5" rowHeight="100px">
     <mat-grid-tile
-      *ngFor="let tile of noStreamTiles"
+      *ngFor="let tile of noStreamTiles; let i = index"
       [colspan]="tile.cols"
       [rowspan]="tile.rows"
       [style.background]="tile.color"
     >{{tile.text}}
+      <i (click)="$event.stopPropagation();" [matMenuTriggerFor]="menu" *ngIf="i===0 && extensions?.length > 0"
+         class="material-icons"> info </i>
+      <mat-menu #menu="matMenu">
+        <button *ngFor="let extension of extensions" mat-menu-item
+                (click)="open(extension);">
+          {{extension.name}}
+        </button>
+      </mat-menu>
     </mat-grid-tile>
   </mat-grid-list>
 </ng-template>

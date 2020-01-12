@@ -6,13 +6,11 @@ import {mergeMap} from 'rxjs/operators';
 import {updateStreamUrl, updateVideoUrl} from '../streamUtils';
 import {Video} from '../models/video';
 import {oc} from 'ts-optchain';
-import {Store} from '@ngrx/store';
-import {AppState} from '../twitch-store/twitch.reducer';
-import {setLastRefreshTime, setLoggedUser, setSubscriptions} from '../twitch-store/twitch.actions';
+import {setExtensions, setLastRefreshTime, setLoggedUser, setSubscriptions} from '../twitch-store/twitch.actions';
 import {StoreService} from '../../store.service';
 import * as moment from 'moment';
-import {Subject} from 'rxjs/index';
-import {takeUntil} from 'rxjs/internal/operators';
+import {interval, Observable, Subject} from 'rxjs/index';
+import {map, takeUntil} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-twitch-section',
@@ -29,22 +27,27 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
   displayedUser: User;
   previousVideos: Video[];
   lastRefresh: moment.Moment;
+  minutesToNow$: Observable<number>;
 
   destroy$ = new Subject<any>();
 
   constructor(private cookieService: CookieService,
               private twitchService: TwitchHttpService,
-              private store: Store<AppState>,
               private storeService: StoreService) {
   }
 
   ngOnInit() {
-
     this.storeService.spyOnLastRefreshTime().pipe(
       takeUntil(this.destroy$)
     ).subscribe(lastRefresh => {
       this.lastRefresh = lastRefresh;
-      console.log(lastRefresh);
+
+      this.minutesToNow$ = interval(1000 * 60).pipe(
+        map(() => {
+            const ms = moment(moment(), 'HH:mm:ss').diff(moment(this.lastRefresh, 'HH:mm:ss'));
+            return +moment.utc(ms).format('m');
+          }
+        ));
     });
 
     this.token = this.cookieService.get('token');
@@ -61,11 +64,17 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
             this.storeService.dispatch(setLoggedUser({user}));
             return this.twitchService.retrieveCompleteSubscriptions(this.user.userId);
           }),
+          mergeMap(
+            (subscriptions: User[]) => {
+              this.data = updateStreamUrl(subscriptions).sort((userA, userB) => userA.live ? -1 : 1);
+              this.storeService.dispatch(setSubscriptions({subscriptions: this.data}));
+              this.storeService.dispatch(setLastRefreshTime()); // à passer en Effect
+              return this.twitchService.getPanelExtensions(this.user.userId);
+            }
+          )
         )
-        .subscribe((subscriptions: User[]) => {
-          this.data = updateStreamUrl(subscriptions).sort((userA, userB) => userA.live ? -1 : 1);
-          this.storeService.dispatch(setSubscriptions({subscriptions: this.data}));
-          this.storeService.dispatch(setLastRefreshTime()); // à passer en Effect
+        .subscribe(extensions => {
+          this.storeService.dispatch(setExtensions({extensions}));
         });
     }
   }
@@ -125,7 +134,6 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
     if (hash && hash.indexOf(tokenAnchor) !== -1) {
       const index = hash.indexOf(tokenAnchor);
       this.token = hash.substr(index + tokenAnchor.length, 30);
-      console.log(this.token);
       this.cookieService.set('token', this.token);
     }
   }

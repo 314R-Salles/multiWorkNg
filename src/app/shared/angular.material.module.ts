@@ -3,11 +3,14 @@ import {
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
-  MatCheckboxModule, MatChipsModule, MatDividerModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDividerModule,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
+  MatMenuModule,
   MatOptionModule,
   MatPaginatorModule,
   MatSelectModule,
@@ -38,6 +41,7 @@ import {
     MatSidenavModule,
     MatDividerModule,
     MatChipsModule,
+    MatMenuModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -58,6 +62,7 @@ import {
     MatSidenavModule,
     MatDividerModule,
     MatChipsModule,
+    MatMenuModule,
   ],
   declarations: []
 })

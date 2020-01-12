@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Stream} from './models/stream';
 import {User} from './models/user';
 import {Video} from './models/video';
 import {Observable} from 'rxjs/index';
@@ -8,6 +7,7 @@ import {Observable} from 'rxjs/index';
 @Injectable()
 export class TwitchHttpService {
 
+  // TODO A passer dans environment.ts
   BASE_API = 'http://localhost:8080';
   TWITCH_API = '/twitch';
   API_URL: string;
@@ -24,16 +24,16 @@ export class TwitchHttpService {
     return this.http.get<User>(this.API_URL + '/getMyUser');
   }
 
-  retrieveSubscriptions(userId: string): Observable<Stream[]> {
-    return this.http.get<Stream[]>(this.API_URL + '/streams/user/' + userId);
-  }
-
   retrieveCompleteSubscriptions(userId: string): Observable<User[]> {
-    return this.http.get<User[]>(this.API_URL + '/streams/user/' + userId + '/2');
+    return this.http.get<User[]>(this.API_URL + '/streams/user/' + userId);
   }
 
   getVideos(userId: string): Observable<Video[]> {
     return this.http.get<Video[]>(this.API_URL + '/user/' + userId + '/videos');
+  }
+
+  getPanelExtensions(userId: string): Observable<any> {
+    return this.http.get<any>(this.API_URL + '/extensions/user/' + userId);
   }
 
 }
