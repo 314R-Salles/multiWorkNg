@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TwitchHttpService} from '../twitch-http-service';
-import {CookieService} from 'ngx-cookie-service';
 import {User} from '../models/user';
 import {mergeMap} from 'rxjs/operators';
 import {updateStreamUrl, updateVideoUrl} from '../streamUtils';
@@ -31,8 +30,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
 
   destroy$ = new Subject<any>();
 
-  constructor(private cookieService: CookieService,
-              private twitchService: TwitchHttpService,
+  constructor(private twitchService: TwitchHttpService,
               private storeService: StoreService) {
   }
 
@@ -50,7 +48,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
         ));
     });
 
-    this.token = this.cookieService.get('token');
+    this.token = sessionStorage.getItem('twitch');
 
     this.extractToken(document.location.hash);
     this.clearHash();
@@ -121,7 +119,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
 
   logout() {
     this.storeService.dispatch(setLoggedUser({user: null}));
-    this.cookieService.delete('token');
+    sessionStorage.removeItem('twitch');
     window.location.reload();
   }
 
@@ -134,7 +132,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
     if (hash && hash.indexOf(tokenAnchor) !== -1) {
       const index = hash.indexOf(tokenAnchor);
       this.token = hash.substr(index + tokenAnchor.length, 30);
-      this.cookieService.set('token', this.token);
+      sessionStorage.setItem('twitch', this.token);
     }
   }
 

@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CookieService} from 'ngx-cookie-service';
 import {TwitchHttpService} from './twitch-http-service';
 import {PreviousVideosTableComponent} from './previous-videos-table/previous-videos-table.component';
 import {TwitchSectionComponent} from './twitch-section/twitch-section.component';
@@ -21,7 +20,6 @@ const appRoutes: Routes = [
   ],
   providers: [
     TwitchHttpService,
-    CookieService
   ],
   declarations: [
     TwitchSectionComponent,
