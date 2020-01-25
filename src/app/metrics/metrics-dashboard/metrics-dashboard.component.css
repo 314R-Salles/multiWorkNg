@@ -42,8 +42,7 @@ table {
 }
 
 .category {
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .filterMode {

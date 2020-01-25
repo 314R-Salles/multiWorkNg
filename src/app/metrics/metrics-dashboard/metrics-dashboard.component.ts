@@ -25,8 +25,15 @@ export class MetricsDashboardComponent implements OnInit {
     {label: 'My beans', filter: 'com.psalles', selected: false}
   ];
 
-  searchByFilter = true;
   filter = '';
+  defaultFilterPredicate;
+  contexts = [];
+
+  FilterMode = 'FilterMode';
+  CategoryMode = 'CategoryMode';
+  ContextMode = 'ContextMode';
+
+  selectedMode = this.FilterMode;
 
   constructor(private metricsHttpService: MetricsHttpService) {
   }
@@ -40,6 +47,10 @@ export class MetricsDashboardComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Bean>(this.beans);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.defaultFilterPredicate = this.dataSource.filterPredicate;
+      const contextsSet = new Set(this.beans.map(bean => bean.context));
+      contextsSet.forEach(context =>
+        this.contexts.push({label: context, filter: context, selected: false}));
     });
   }
 
@@ -59,18 +70,40 @@ export class MetricsDashboardComponent implements OnInit {
   }
 
   setCategoryMode() {
-    if (this.searchByFilter) {
-      this.searchByFilter = false;
+    if (this.selectedMode !== this.CategoryMode) {
+      this.selectedMode = this.CategoryMode;
       this.resetFilterAndCategories();
+      this.dataSource.filterPredicate = this.defaultFilterPredicate;
       this.categories.find(category => category.filter === '').selected = true;
       this.applyFilter();
     }
   }
 
-  setFilterMode() {
-    if (!this.searchByFilter) {
-      this.searchByFilter = true;
+  setContext(context) {
+    this.resetFilterAndCategories();
+    context.selected = true;
+    this.filter = context.filter;
+    this.applyFilter();
+  }
+
+  setContextMode() {
+    if (this.selectedMode !== this.ContextMode) {
+      this.selectedMode = this.ContextMode;
       this.resetFilterAndCategories();
+
+      this.dataSource.filterPredicate = (data, filter: string) =>
+        data.context.toLowerCase().includes(filter);
+
+      this.contexts.find(context => context.filter === '').selected = true;
+      this.applyFilter();
+    }
+  }
+
+  setFilterMode() {
+    if (this.selectedMode !== this.FilterMode) {
+      this.selectedMode = this.FilterMode;
+      this.resetFilterAndCategories();
+      this.dataSource.filterPredicate = this.defaultFilterPredicate;
       this.applyFilter();
     }
   }
@@ -78,6 +111,7 @@ export class MetricsDashboardComponent implements OnInit {
   resetFilterAndCategories() {
     this.filter = '';
     this.categories.forEach(category => category.selected = false);
+    this.contexts.forEach(context => context.selected = false);
   }
 
 }

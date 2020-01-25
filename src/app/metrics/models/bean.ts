@@ -5,6 +5,7 @@ export class Bean {
   resource: string;
   type: string;
   aliases: string[];
+  context: string;
   dependencies: string[];
 
   constructor(name?: string,
@@ -12,12 +13,14 @@ export class Bean {
               aliases?: string[],
               dependencies?: string[],
               resource?: string,
-              type?: string) {
+              type?: string,
+              context?: string) {
     this.name = name;
     this.scope = scope;
     this.type = type;
     this.aliases = aliases;
     this.dependencies = dependencies;
+    this.context = context;
     this.resource = resource;
   }
 

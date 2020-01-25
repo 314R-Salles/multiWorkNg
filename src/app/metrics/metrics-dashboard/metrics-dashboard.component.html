@@ -4,19 +4,24 @@
   <p class="filterMode">
     Search by :
     <span (click)="setFilterMode()"
-          [ngClass]="{'selected': searchByFilter}">
+          [ngClass]="{'selected': selectedMode === FilterMode}">
       Filter
     </span>
     &nbsp;or
     <span (click)="setCategoryMode()"
-          [ngClass]="{'selected': !searchByFilter}">
+          [ngClass]="{'selected': selectedMode === CategoryMode}">
       Category
+    </span>
+    &nbsp;or
+    <span (click)="setContextMode()"
+          [ngClass]="{'selected': selectedMode === ContextMode}">
+      Context
     </span>
   </p>
 
   <div class="filterAndPagination">
     <div class="category">
-      <ng-container *ngIf="searchByFilter === false" >
+      <ng-container *ngIf="selectedMode === CategoryMode">
         <mat-chip-list>
           <mat-chip *ngFor="let category of categories;"
                     [selected]="category.selected"
@@ -26,7 +31,17 @@
         </mat-chip-list>
       </ng-container>
 
-      <mat-form-field *ngIf="searchByFilter">
+      <ng-container *ngIf="selectedMode === ContextMode">
+        <mat-chip-list>
+          <mat-chip *ngFor="let context of contexts;"
+                    [selected]="context.selected"
+                    (click)="setContext(context)">
+            {{context.label}}
+          </mat-chip>
+        </mat-chip-list>
+      </ng-container>
+
+      <mat-form-field *ngIf="selectedMode === FilterMode">
         <input matInput (keyup)="applyFilter()" placeholder="Filter" [(ngModel)]="filter">
       </mat-form-field>
     </div>

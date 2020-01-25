@@ -119,7 +119,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
 
   logout() {
     this.storeService.dispatch(setLoggedUser({user: null}));
-    sessionStorage.removeItem('twitch');
+    sessionStorage.removeItem('token');
     window.location.reload();
   }
 
