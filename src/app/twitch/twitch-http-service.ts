@@ -16,10 +16,6 @@ export class TwitchHttpService {
     this.API_URL = this.BASE_API + this.TWITCH_API;
   }
 
-  login(token: string): Observable<any> {
-    return this.http.post(this.API_URL + '/login', token);
-  }
-
   retrieveMyUser(): Observable<User> {
     return this.http.get<User>(this.API_URL + '/getMyUser');
   }

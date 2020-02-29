@@ -50,12 +50,9 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
 
     this.token = sessionStorage.getItem('twitch');
 
-    this.extractToken(document.location.hash);
-    this.clearHash();
     if (this.token) {
-      this.twitchService.login(this.token)
+      this.twitchService.retrieveMyUser()
         .pipe(
-          mergeMap(() => this.twitchService.retrieveMyUser()),
           mergeMap((user: User) => {
             user.token = this.token;
             this.user = user;
@@ -119,22 +116,10 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
 
   logout() {
     this.storeService.dispatch(setLoggedUser({user: null}));
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('twitch');
     window.location.reload();
   }
 
-  clearHash() {
-    history.pushState('', document.title, window.location.pathname + window.location.search);
-  }
-
-  extractToken(hash: string) {
-    const tokenAnchor = 'access_token=';
-    if (hash && hash.indexOf(tokenAnchor) !== -1) {
-      const index = hash.indexOf(tokenAnchor);
-      this.token = hash.substr(index + tokenAnchor.length, 30);
-      sessionStorage.setItem('twitch', this.token);
-    }
-  }
 
   ngOnDestroy(): void {
     this.destroy$.next();
