@@ -18,7 +18,7 @@ import {map, takeUntil} from 'rxjs/internal/operators';
 })
 export class TwitchSectionComponent implements OnInit, OnDestroy {
 
-  public url = 'https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=048o30kiq54suyv43jio7boaknv8e2&redirect_uri=http://localhost:4200/twitch&scope=user_subscriptions&state=c3ab8aa609ea11e793ae92361f002671';
+  public url = 'https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=048o30kiq54suyv43jio7boaknv8e2&redirect_uri=http://51.178.84.104&scope=user_subscriptions&state=c3ab8aa609ea11e793ae92361f002671';
   data: User[];
   token: string;
   user: User;

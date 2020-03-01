@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class HomePageService {
 
-  BASE_API = 'http://localhost:8080';
+  BASE_API = 'http://51.178.84.104:8080';
   TWITCH_API = '/home';
   API_URL: string;
 

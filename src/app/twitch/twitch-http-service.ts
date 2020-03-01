@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/index';
 export class TwitchHttpService {
 
   // TODO A passer dans environment.ts
-  BASE_API = 'http://localhost:8080';
+  BASE_API = 'http://51.178.84.104:8080';
   TWITCH_API = '/twitch';
   API_URL: string;
 

@@ -7,7 +7,7 @@ import {Bean} from './models/bean';
   providedIn: 'root'
 })
 export class MetricsHttpService {
-  BASE_API = 'http://localhost:8080/';
+  BASE_API = 'http://51.178.84.104:8080/';
   ACTUATORS_API = '/actuators';
   API_URL: string;
 

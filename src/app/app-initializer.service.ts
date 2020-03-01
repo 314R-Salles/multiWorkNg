@@ -13,7 +13,7 @@ export class AppInitializerService {
   }
 
   clearHash() {
-    location.hash = window.location.pathname;
+    location.hash = '/twitch';
   }
 
   extractToken() {
