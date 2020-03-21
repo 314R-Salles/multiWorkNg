@@ -3,12 +3,12 @@ import {HttpClient} from '@angular/common/http';
 import {User} from './models/user';
 import {Video} from './models/video';
 import {Observable} from 'rxjs/index';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class TwitchHttpService {
 
-  // TODO A passer dans environment.ts
-  BASE_API = 'http://51.178.84.104:8080';
+  BASE_API = environment.JAVA_API;
   TWITCH_API = '/twitch';
   API_URL: string;
 

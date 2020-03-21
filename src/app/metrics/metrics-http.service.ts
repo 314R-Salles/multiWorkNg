@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/index';
 import {Bean} from './models/bean';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MetricsHttpService {
-  BASE_API = 'http://51.178.84.104:8080/';
+  BASE_API = environment.JAVA_API;
   ACTUATORS_API = '/actuators';
   API_URL: string;
 

@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-header-menu',
   templateUrl: './header-menu.component.html',
   styleUrls: ['./header-menu.component.css']
 })
-export class HeaderMenuComponent implements OnInit {
+export class HeaderMenuComponent {
 
-  constructor() { }
+  SWAGGER_URL = environment.SWAGGER_URL;
 
-  ngOnInit() {
+  constructor() {
   }
 
 }
