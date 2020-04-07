@@ -8,8 +8,8 @@ export class User {
   type: string;
   broadcasterType: string;
   description: string;
-  profileImageUrl: string;
-  offlineImageUrl: string;
+  profileImage: string;
+  offlineImage: string;
   viewCount: number;
   email: string;
   live: Stream;
@@ -22,8 +22,8 @@ export class User {
               type: string,
               broadcasterType: string,
               description: string,
-              profileImageUrl: string,
-              offlineImageUrl: string,
+              profileImage: string,
+              offlineImage: string,
               viewCount: number,
               email: string,
               live: Stream) {
@@ -33,8 +33,8 @@ export class User {
     this.type = type;
     this.broadcasterType = broadcasterType;
     this.description = description;
-    this.profileImageUrl = profileImageUrl;
-    this.offlineImageUrl = offlineImageUrl;
+    this.profileImage = profileImage;
+    this.offlineImage = offlineImage;
     this.viewCount = viewCount;
     this.email = email;
     this.live = live;

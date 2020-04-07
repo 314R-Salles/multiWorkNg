@@ -25,18 +25,18 @@
     </div>
   </mat-card>
   <div class="container">
-    <div class="element scroll">
+    <div class="element-left scroll">
       <mat-card *ngFor="let user of data"
-                [ngStyle]="{'background-color': isUserSelected(user) ? 'blue' : null}">
+                [ngStyle]="{'background-color': backgroundColor(user)}">
         <app-twitch-row [user]="user" (click)="clickRow(user)"></app-twitch-row>
       </mat-card>
     </div>
 
-    <div class="element scroll" *ngIf="displayedStreamer">
+    <div class="element-right scroll" *ngIf="displayedStreamer">
       <app-twitch-player [streamer]="displayedStreamer"></app-twitch-player>
     </div>
 
-    <div class="element scroll" *ngIf="displayedUser">
+    <div class="element-right scroll" *ngIf="displayedUser">
       <app-previous-videos-table [videos]="previousVideos"></app-previous-videos-table>
     </div>
   </div>

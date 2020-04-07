@@ -12,6 +12,10 @@ export class Stream {
   username: string;
   viewerCount: number;
 
+  gameName: string;
+  gameIconUrl: string;
+  updatedGameIconUrl: string;
+
   constructor(gameId: string,
               language: string,
               liveId: string,

@@ -30,16 +30,17 @@ export class TwitchRowComponent implements OnInit, OnDestroy {
 
     if (this.user.live) {
       this.tiles = [
-        {text: this.user.live.username, cols: 1, rows: 1, color: 'lightblue'},
-        {text: this.user.live.title, cols: 2, rows: 1, color: 'lightpink'},
-        {text: '', cols: 2, rows: 2, color: ''},
-        {text: 'Viewers :' + this.user.live.viewerCount, cols: 3, rows: 1, color: '#DDBDF1'},
+        {cols: 1, rows: 2},
+        {cols: 2, rows: 1, text: this.getShortenedName(this.user.displayName, 20), fontSize: '0.9vw', fontWeight: 'bold'},
+        {cols: 4, rows: 1, text: this.getShortenedName(this.user.live.gameName, 30), fontSize: '0.7vw'},
+        {cols: 1, rows: 2},
+        {cols: 6, rows: 1, text: this.getShortenedName(this.user.live.title, 50), fontSize: '0.55vw'},
       ];
     } else {
       this.noStreamTiles = [
-        {text: this.user.displayName, cols: 1, rows: 1, color: 'lightblue'},
-        {text: this.user.description, cols: 3, rows: 1, color: 'lightpink'},
-        {text: 'Views :' + this.user.viewCount, cols: 1, rows: 1, color: '#DDBDF1'},
+        {cols: 1, rows: 1},
+        {cols: 6, rows: 1, text: this.getShortenedName(this.user.displayName, 20), fontSize: '0.9vw', fontWeight: 'bold'},
+        {cols: 1, rows: 1},
       ];
     }
   }
@@ -53,6 +54,14 @@ export class TwitchRowComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.unsubscribe();
+  }
+
+  getShortenedName(name: string, length: number) {
+    if (name.length > length) {
+      return name.substr(0, length) + '...';
+    } else {
+      return name;
+    }
   }
 
 }

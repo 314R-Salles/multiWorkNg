@@ -36,8 +36,15 @@
   align-items: center;
 }
 
-.element {
-  width: 50%;
+.element-left {
+  width: 25%;
+}
+.element-left > mat-card {
+  padding: 5px;
+}
+
+.element-right {
+  width: 75%;
 }
 
 .scroll {

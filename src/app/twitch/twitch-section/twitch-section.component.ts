@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TwitchHttpService} from '../twitch-http-service';
 import {User} from '../models/user';
 import {mergeMap} from 'rxjs/operators';
-import {updateStreamUrl, updateVideoUrl} from '../streamUtils';
+import {updateStreamUrls, updateVideoUrl} from '../streamUtils';
 import {Video} from '../models/video';
 import {oc} from 'ts-optchain';
 import {setExtensions, setLastRefreshTime, setLoggedUser, setSubscriptions} from '../twitch-store/twitch.actions';
@@ -10,6 +10,7 @@ import {StoreService} from '../../store.service';
 import * as moment from 'moment';
 import {interval, Observable, Subject} from 'rxjs/index';
 import {map, takeUntil} from 'rxjs/internal/operators';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-twitch-section',
@@ -18,7 +19,7 @@ import {map, takeUntil} from 'rxjs/internal/operators';
 })
 export class TwitchSectionComponent implements OnInit, OnDestroy {
 
-  public url = 'https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=048o30kiq54suyv43jio7boaknv8e2&redirect_uri=http://51.178.84.104&scope=user_subscriptions&state=c3ab8aa609ea11e793ae92361f002671';
+  public url = environment.TWITCH_AUTH_URL;
   data: User[];
   token: string;
   user: User;
@@ -61,7 +62,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
           }),
           mergeMap(
             (subscriptions: User[]) => {
-              this.data = updateStreamUrl(subscriptions).sort((userA, userB) => userA.live ? -1 : 1);
+              this.data = updateStreamUrls(subscriptions).sort((userA, userB) => userA.live ? -1 : 1);
               this.storeService.dispatch(setSubscriptions({subscriptions: this.data}));
               this.storeService.dispatch(setLastRefreshTime()); // à passer en Effect
               return this.twitchService.getPanelExtensions(this.user.userId);
@@ -108,7 +109,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
 
   refreshSubscriptions() {
     this.twitchService.retrieveCompleteSubscriptions(this.user.userId).subscribe((subscriptions: User[]) => {
-      this.data = updateStreamUrl(subscriptions).sort((userA, userB) => userA.live ? -1 : 1);
+      this.data = updateStreamUrls(subscriptions).sort((userA, userB) => userA.live ? -1 : 1);
       this.storeService.dispatch(setSubscriptions({subscriptions: this.data}));
       this.storeService.dispatch(setLastRefreshTime()); // à passer en Effect
     });
@@ -124,5 +125,11 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.unsubscribe();
+  }
+
+  backgroundColor(user: User) {
+    return !!user.live ?
+      this.isUserSelected(user) ? '#b7d8b7' : '#d6ffd7'
+      : this.isUserSelected(user) ? '#cfcd97' : '#fffae0';
   }
 }
