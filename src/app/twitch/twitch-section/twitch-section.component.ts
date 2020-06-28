@@ -58,14 +58,14 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
             user.token = this.token;
             this.user = user;
             this.storeService.dispatch(setLoggedUser({user}));
-            return this.twitchService.retrieveCompleteSubscriptions(this.user.userId);
+            return this.twitchService.retrieveCompleteSubscriptions();
           }),
           mergeMap(
             (subscriptions: User[]) => {
               this.data = updateStreamUrls(subscriptions).sort((userA, userB) => userA.live ? -1 : 1);
               this.storeService.dispatch(setSubscriptions({subscriptions: this.data}));
               this.storeService.dispatch(setLastRefreshTime()); // à passer en Effect
-              return this.twitchService.getPanelExtensions(this.user.userId);
+              return this.twitchService.getPanelExtensions();
             }
           )
         )
@@ -93,11 +93,11 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
     }
   }
 
-  getVideos(user: User) {
+  getVideos(streamer: User) {
     this.displayedStreamer = null;
-    if (!this.displayedUser || this.displayedUser.userId !== user.userId) {
-      this.displayedUser = user;
-      this.twitchService.getVideos(user.userId).subscribe(r => this.previousVideos = updateVideoUrl(r));
+    if (!this.displayedUser || this.displayedUser.userId !== streamer.userId) {
+      this.displayedUser = streamer;
+      this.twitchService.getVideos(streamer.userId).subscribe(r => this.previousVideos = updateVideoUrl(r));
     } else {
       this.displayedUser = null;
     }
@@ -108,7 +108,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
   }
 
   refreshSubscriptions() {
-    this.twitchService.retrieveCompleteSubscriptions(this.user.userId).subscribe((subscriptions: User[]) => {
+    this.twitchService.retrieveCompleteSubscriptions().subscribe((subscriptions: User[]) => {
       this.data = updateStreamUrls(subscriptions).sort((userA, userB) => userA.live ? -1 : 1);
       this.storeService.dispatch(setSubscriptions({subscriptions: this.data}));
       this.storeService.dispatch(setLastRefreshTime()); // à passer en Effect
@@ -116,11 +116,13 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.storeService.dispatch(setLoggedUser({user: null}));
-    sessionStorage.removeItem('twitch');
-    window.location.reload();
-  }
+    this.twitchService.logout().subscribe(_ => {
+      this.storeService.dispatch(setLoggedUser({user: null}));
+      sessionStorage.removeItem('twitch');
+      window.location.reload();
+    });
 
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();

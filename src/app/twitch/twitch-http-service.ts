@@ -20,16 +20,20 @@ export class TwitchHttpService {
     return this.http.get<User>(this.API_URL + '/getMyUser');
   }
 
-  retrieveCompleteSubscriptions(userId: string): Observable<User[]> {
-    return this.http.get<User[]>(this.API_URL + '/streams/user/' + userId);
+  retrieveCompleteSubscriptions(): Observable<User[]> {
+    return this.http.get<User[]>(this.API_URL + '/streams');
   }
 
-  getVideos(userId: string): Observable<Video[]> {
-    return this.http.get<Video[]>(this.API_URL + '/user/' + userId + '/videos');
+  getVideos(streamerId: string): Observable<Video[]> {
+    return this.http.get<Video[]>(this.API_URL + '/user/' + streamerId + '/videos');
   }
 
-  getPanelExtensions(userId: string): Observable<any> {
-    return this.http.get<any>(this.API_URL + '/extensions/user/' + userId);
+  getPanelExtensions(): Observable<any> {
+    return this.http.get<any>(this.API_URL + '/extensions');
+  }
+
+  logout() {
+    return this.http.post(this.API_URL + '/logout', null);
   }
 
 }
