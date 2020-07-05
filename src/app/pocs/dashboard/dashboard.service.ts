@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomePageService {
+export class DashboardService {
 
   BASE_API = environment.JAVA_API;
   TWITCH_API = '/home';

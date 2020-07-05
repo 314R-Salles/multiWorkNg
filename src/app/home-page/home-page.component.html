@@ -1,9 +1,43 @@
-<div style="display: flex; justify-content: space-around;">
-
-  <div *ngFor="let video of videos">
-    <iframe type="text/html" width="640" height="360"
-            [src]="video"
-            frameborder="0"></iframe>
-
+<div style="height:100%;text-align: center; background-image: url('assets/bg.jpg');">
+  <div style="display: flex;justify-content: space-between;">
+    <img style="width: 10%" src="https://www.gifgratis.net/gifs_animes/kao/73.gif">
+    <img style="width: 75%" src="assets/title.png">
+    <img style="width: 10%" src="https://www.gifgratis.net/gifs_animes/kao/97.gif">
   </div>
+
+  <div>
+    <img src="https://www.gifgratis.net/gifs_animes/boutons_de_site_web/38.gif">
+    <marquee width="400px" behavior="SCROLL" bgcolor="yellow" style="margin: 0px 30px 35px 30px">
+      I managed to learn obsolete stuff thanks to Coronavirus !!!!
+    </marquee>
+    <img src="https://www.gifgratis.net/gifs_animes/boutons_de_site_web/38.gif">
+  </div>
+
+  <p (click)="toggleElement(0)" style="color: white; font-weight: 900; font-size: 25px">You want to see something
+    incredible ??? Just
+    <img src="https://www.gifgratis.net/gifs_animes/boutons_web/48.gif"></p>
+  <br>
+  <p *ngIf="showElement[0]" style="color: white; font-weight: 900; font-size: 25px">
+    <img src="https://www.gifgratis.net/gifs_animes/wow/1.gif"> I lied, there is nothing.
+    <img src="https://www.gifgratis.net/gifs_animes/wow/1.gif">
+  </p>
+  <br>
+  <img style="width: 20px" src="https://www.gifgratis.net/gifs_animes/boutons_web/66.gif">
+  <img style="width: 20px" src="https://www.gifgratis.net/gifs_animes/boutons_web/66.gif">
+  <img style="width: 20px" src="https://www.gifgratis.net/gifs_animes/boutons_web/66.gif">
+  <img style="width: 20px" src="https://www.gifgratis.net/gifs_animes/boutons_web/66.gif">
+
+  <br>
+  <br>
+  <br>
+  <img (click)="toggleElement(1)" src="https://www.gifgratis.net/gifs_animes/boutons_de_site_web/114.gif">
+
+  <p *ngIf="showElement[1]" style="color: white; font-weight: 900; font-size: 25px">
+    Actually no, don't.
+  </p>
+  <br>
+  <img src="https://www.gifgratis.net/gifs_animes/wow/1.gif">
+  <img src="https://www.gifgratis.net/gifs_animes/wow/1.gif">
+  <img src="https://www.gifgratis.net/gifs_animes/wow/1.gif">
+
 </div>

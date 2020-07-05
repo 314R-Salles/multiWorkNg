@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HomePageService } from './home-page.service';
+import { DashboardService } from './dashboard.service';
 
-describe('HomePageService', () => {
+describe('DashboardService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: HomePageService = TestBed.get(HomePageService);
+    const service: DashboardService = TestBed.get(DashboardService);
     expect(service).toBeTruthy();
   });
 });
