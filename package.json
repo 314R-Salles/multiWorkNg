@@ -29,6 +29,7 @@
     "material-design-icons": "^3.0.1",
     "moment": "^2.24.0",
     "ngx-cookie-service": "^2.2.0",
+    "p5": "^1.0.0",
     "rxjs": "^6.5.3",
     "ts-optchain": "^0.1.8",
     "tslib": "^1.10.0",

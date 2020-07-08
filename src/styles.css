@@ -14,3 +14,9 @@ body {
   margin: 0 !important;
   overflow: hidden;
 }
+
+@media screen and (max-width: 600px), screen and (max-height: 600px) {
+  body {
+    overflow: auto;
+  }
+}
