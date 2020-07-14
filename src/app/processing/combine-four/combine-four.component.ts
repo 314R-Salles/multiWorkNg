@@ -45,13 +45,17 @@ export class CombineFourComponent implements OnInit, OnDestroy {
 
 
   sendMessage(message) {
-    this.stompClient.send('/app/send/message', {}, message);
+    this.stompClient.send('/app/send/connect4', {}, message);
   }
 
   ngOnInit() {
     this.userId = uuid.v4();
 
     const sketch = s => {
+      /**
+       * Game is 7*6, but array is 13*12 since I add a length of 3 for each side.
+       * Enables me to test token combinations without using dozens of if else statements
+       */
       const plateau = createArray();
       let gameOver = false;
 
@@ -62,7 +66,7 @@ export class CombineFourComponent implements OnInit, OnDestroy {
         this.stompClient = Stomp.over(ws);
         const that = this;
         this.stompClient.connect({}, () => {
-          that.stompClient.subscribe('/chat', (message) => {
+          that.stompClient.subscribe('/connect4', (message) => {
             const parsedMessage = JSON.parse(message.body);
             if (!parsedMessage.replay && this.previousPlayerUuid !== parsedMessage.uuid) {
               const yPos = s.placeToken(+parsedMessage.xpos);
@@ -120,9 +124,14 @@ export class CombineFourComponent implements OnInit, OnDestroy {
       };
 
 
+      /** We only use the X coordinate to select a column, then we "drop" a token in it.
+       *  8 is the bottom row ( starts at 0, height is 6, with 3 extra rows => 8)
+       *  We try to place a token at the bottom row. If there is already a token, we go up and try the (8 - 1)th spot, then (8 - 2)th...
+       *  Then we swap tokens for the next player, and return 8-i, the height of the played token.
+       */
       s.placeToken = (x: number) => {
         for (let i = 0; i < 6; i++) {
-          if (plateau[8 - i][x + 2] === '') {
+          if (plateau[8 - i][x + 2] === ' ') {
             plateau[8 - i][x + 2] = token;
             if (token === 'O') {
               s.fill(255, 255, 0);
@@ -139,6 +148,11 @@ export class CombineFourComponent implements OnInit, OnDestroy {
       };
 
 
+      /**
+       *  Extract the 4 lines of tokens which have the new token as center. - | / \
+       *  Then find a winning combination in those 4 lines. Concatenation let us search once, instead of searching once for each direction.
+       *  The 4 lines starts with a space, so that concatenation doesn't create false positives.
+       */
       s.checkWin = (y, x) => {
         let h = ' ';
         let v = ' ';
@@ -165,11 +179,12 @@ export class CombineFourComponent implements OnInit, OnDestroy {
       s.clearTable = () => {
         for (let j = 3; j < 9; j++) {
           for (let i = 3; i < 10; i++) {
-            plateau[j][i] = '';
+            plateau[j][i] = ' ';
           }
         }
       };
 
+      // draw rectangle then "erase" all the possible token spots
       s.drawTable = () => {
         s.fill(255, 226, 147);
         s.rect(0, 0, this.gridWidth, this.height);
@@ -221,7 +236,7 @@ export class CombineFourComponent implements OnInit, OnDestroy {
       for (let i = 0; i < 12; i++) {
         array[i] = [];
         for (let j = 0; j < 13; j++) {
-          array[i][j] = '';
+          array[i][j] = ' ';
         }
       }
       return array;
@@ -230,6 +245,7 @@ export class CombineFourComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // A new connection starts each time the component is created
     this.stompClient.disconnect();
   }
 }

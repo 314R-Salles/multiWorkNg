@@ -39,6 +39,10 @@ export class MineSweeperComponent implements OnInit {
 
   ngOnInit() {
     const sketch = s => {
+      /**
+       * Game is 8*8, but array are 10*10 since I add a length of 1 for each side.
+       * Enables me to count mines on the sides without using dozens of if else statements
+       */
       const mines = createArray();
       const plateau = createArray();
       let gameOver = false;
@@ -55,7 +59,6 @@ export class MineSweeperComponent implements OnInit {
       };
 
       s.mouseClicked = () => {
-
         if (!gameOver && s.mouseX > 0 && s.mouseX <= this.gridWidth && s.mouseY > 0 && s.mouseY < this.height) {
           s.unveil(Math.floor(s.mouseX / this.boxWidth) + 1, Math.floor(s.mouseY / this.boxWidth) + 1);
           s.checkWin();
@@ -79,6 +82,7 @@ export class MineSweeperComponent implements OnInit {
         // clear screen
         s.background(150);
 
+        // 0.8 is the parameter that defines the average difficulty of the game (population of mines)
         for (let j = 1; j < 9; j++) {
           for (let i = 1; i < 9; i++) {
             mines[j][i] = Math.random() > 0.8 ? 1 : 0;
@@ -87,13 +91,17 @@ export class MineSweeperComponent implements OnInit {
             s.line(0, j * this.boxWidth, this.height, j * this.boxWidth);
           }
         }
+
+        // remove mines in corners for an 'easy' start
         mines[1][1] = mines[8][8] = mines[8][1] = mines[1][8] = 0;
 
+        // Could be in the double for loop above, without the corner cheat
         for (let j = 1; j < 9; j++) {
           for (let i = 1; i < 9; i++) {
             minesNumber += mines[j][i];
           }
         }
+
         s.textSize(this.smallTextSize);
         s.fill(255, 0, 0); // red
         s.rect(this.buttonStartX, this.buttonStartY, this.buttonWidth, this.buttonHeight);
@@ -107,10 +115,11 @@ export class MineSweeperComponent implements OnInit {
       s.unveil = (x, y) => {
         if (mines[y][x] !== 1 && plateau[y][x] === ' ') {
           const minesAround = s.sum(x, y);
-          plateau[y][x] = minesAround; // +48
+          plateau[y][x] = minesAround;
           s.text(plateau[y][x], (x - 0.72) * this.boxWidth, (y - 0.28) * this.boxWidth);
+
           if (minesAround === 0) {
-            s.unveil0(x, y);
+            s.spreadReveal(x, y);
           }
         } else if (mines[y][x] === 1) {
           gameOver = true;
@@ -127,7 +136,7 @@ export class MineSweeperComponent implements OnInit {
           mines[y][x + 1] + mines[y + 1][x - 1] + mines[y + 1][x] + mines[y + 1][x + 1];
       };
 
-      s.unveil0 = (x, y) => {
+      s.spreadReveal = (x, y) => {
         s.unveil(x - 1, y - 1);
         s.unveil(x - 1, y);
         s.unveil(x - 1, y + 1);
@@ -148,7 +157,7 @@ export class MineSweeperComponent implements OnInit {
         }
       };
 
-
+      // check if all cells were either clicked or contains a mine
       s.checkWin = () => {
         let sum = minesNumber;
         for (let j = 1; j < 9; j++) {
@@ -196,13 +205,6 @@ export class MineSweeperComponent implements OnInit {
 
         this.bigTextSize = this.height / 16;
         this.smallTextSize = this.height / 26;
-      };
-
-      s.debug = () => {
-        s.text(s.windowWidth, this.mineNumberX, this.mineNumberY + 30);
-        s.text(this.width, this.mineNumberX, this.mineNumberY + 45);
-        s.text(s.windowHeight, this.mineNumberX, this.mineNumberY + 60);
-        s.text(this.height, this.mineNumberX, this.mineNumberY + 75);
       };
 
     };
