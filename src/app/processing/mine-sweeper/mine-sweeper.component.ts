@@ -70,7 +70,7 @@ export class MineSweeperComponent implements OnInit {
         s.setSizes();
 
         const canvas2 = s.createCanvas(this.width, this.height);
-        canvas2.parent('sketch-holder');
+        canvas2.parent('mineSweeper-holder');
 
         // reset game properties
         minesNumber = 0;

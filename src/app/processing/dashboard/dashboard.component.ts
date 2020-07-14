@@ -7,6 +7,9 @@ import {Component, OnInit} from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  displayConnect4 = false;
+  displayMineSweeper = false;
+
   constructor() {
   }
 

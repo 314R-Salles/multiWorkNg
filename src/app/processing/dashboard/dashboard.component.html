@@ -1,8 +1,32 @@
 List of programs :
+<button (click)="displayMineSweeper = true; displayConnect4 = false;">MineSweeper (solo player)</button>
+<button (click)="displayMineSweeper = false; displayConnect4 = true;">Connect Four (two players)</button>
 
-<p>MineSweeper : </p>
-<p><a href="https://github.com/314R-Salles/mineSweeper" target="_blank">pde version</a></p>
-<p><a href="https://editor.p5js.org/314R/sketches/CeG1iH_OC" target="_blank">p5js version</a></p>
 
-About the game in itself : Corners are always safe spots
-<app-mine-sweeper></app-mine-sweeper>
+<div *ngIf="displayMineSweeper">
+  <p>MineSweeper : </p>
+  <p><a href="https://github.com/314R-Salles/mineSweeper" target="_blank">pde version</a></p>
+  <p><a href="https://editor.p5js.org/314R/sketches/CeG1iH_OC" target="_blank">p5js version</a></p>
+
+  About the game in itself : Corners are always safe spots
+  <app-mine-sweeper></app-mine-sweeper>
+</div>
+
+<div *ngIf="displayConnect4">
+  <p>Connect Four : </p>
+  <p>pde and p5js versions don't have any websocket management. They were drafts, and can only be played on the same
+    computer.</p>
+  <p><a href="https://github.com/314R-Salles/connectFour" target="_blank">pde version</a></p>
+  <p><a href="https://editor.p5js.org/314R/sketches/iBSEWNlsZ" target="_blank">p5js version</a></p>
+
+  <p> About the game in itself : Two players needed, extra people interacting with the game will just make everything go
+    brrrr</p>
+  <p> Also, i'm not saving any data, if you leave the game and then come back, the games of the two players will be out
+    of sync. </p>
+  <p>Just use Restart in that case.</p>
+  <p>First player to click in a column will start and be yellow.</p>
+
+
+  <app-combine-four></app-combine-four>
+</div>
+
