@@ -31,6 +31,12 @@ export class CombineFourComponent implements OnInit, OnDestroy {
   restartX: number;
   restartY: number;
 
+  nextIsX: number;
+  nextIsY: number;
+
+  nextIsTokenX: number;
+  nextIsTokenY: number;
+
   endMessageRedX: number;
   endMessageYellowX: number;
   endMessageY: number;
@@ -121,6 +127,9 @@ export class CombineFourComponent implements OnInit, OnDestroy {
         s.rect(this.buttonStartX, this.buttonStartY, this.buttonWidth, this.buttonHeight);
         s.fill(255); // white
         s.text('Restart', this.restartX, this.restartY);
+        s.text('Next is: ', this.nextIsX, this.nextIsY);
+
+        s.fill(255, 0, 0); // "next is" first color
       };
 
 
@@ -133,6 +142,7 @@ export class CombineFourComponent implements OnInit, OnDestroy {
         for (let i = 0; i < 6; i++) {
           if (plateau[8 - i][x + 2] === ' ') {
             plateau[8 - i][x + 2] = token;
+            s.ellipse(this.nextIsTokenX, this.nextIsTokenY, this.tokenDiameter / 2, this.tokenDiameter / 2);
             if (token === 'O') {
               s.fill(255, 255, 0);
               token = 'X';
@@ -214,6 +224,12 @@ export class CombineFourComponent implements OnInit, OnDestroy {
 
         this.buttonStartX = this.gridWidth * 1.06;
         this.buttonStartY = this.height * 0.875;
+
+        this.nextIsX = this.gridWidth * 1.03;
+        this.nextIsY = this.height * 0.32;
+
+        this.nextIsTokenX = this.gridWidth * 1.2;
+        this.nextIsTokenY = this.height * 0.31;
 
         this.restartX = this.gridWidth * 1.09;
         this.restartY = this.height * 0.918;
