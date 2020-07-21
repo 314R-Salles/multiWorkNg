@@ -4,6 +4,7 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import * as uuid from 'uuid';
 import {environment} from '../../../environments/environment';
+import {BugReportHttpService} from '../bug-report-http.service';
 
 
 @Component({
@@ -28,6 +29,14 @@ export class CombineFourComponent implements OnInit, OnDestroy {
   buttonStartX: number;
   buttonStartY: number;
 
+  bugReportButtonWidth: number;
+  bugReportButtonHeight: number;
+  bugReportButtonStartX: number;
+  bugReportButtonStartY: number;
+
+  bugReportX: number;
+  bugReportY: number;
+
   restartX: number;
   restartY: number;
 
@@ -46,7 +55,7 @@ export class CombineFourComponent implements OnInit, OnDestroy {
   private serverUrl = environment.JAVA_API + '/socket';
   private stompClient;
 
-  constructor() {
+  constructor(private bugReportHttpService: BugReportHttpService) {
   }
 
 
@@ -64,8 +73,11 @@ export class CombineFourComponent implements OnInit, OnDestroy {
        */
       const plateau = createArray();
       let gameOver = false;
+      let reportedBug = false;
 
       let token = 'O';
+
+      let canvas2;
 
       s.initializeWebSocketConnection = () => {
         const ws = new SockJS(this.serverUrl);
@@ -102,18 +114,37 @@ export class CombineFourComponent implements OnInit, OnDestroy {
         } else if (s.mouseX > this.buttonStartX && s.mouseX < this.buttonStartX + this.buttonWidth
           && s.mouseY > this.buttonStartY && s.mouseY < this.buttonStartY + this.buttonHeight) {
           this.sendMessage(JSON.stringify({replay: true}));
+        } else if (!reportedBug && s.mouseX > this.bugReportButtonStartX && s.mouseX < this.bugReportButtonStartX + this.bugReportButtonWidth
+          && s.mouseY > this.bugReportButtonStartY && s.mouseY < this.bugReportButtonStartY + this.bugReportButtonHeight) {
+          reportedBug = true;
+          s.saveFrames('out', 'jpg', 1, 1, data => {
+            this.bugReportHttpService.sendBugReport('connect4', data[0].imageData).subscribe((response) => {
+                if (response.status === 200) {
+                  console.log('Image uploaded successfully');
+                } else {
+                  reportedBug = false;
+                  console.log('Image not uploaded successfully');
+                }
+              }
+            );
+          });
         }
+      };
+
+      s.reportBug = () => {
+        s.saveCanvas(canvas2, 'myCanvas', 'jpg');
       };
 
       s.initialize = () => {
 
         s.setSizes();
 
-        const canvas2 = s.createCanvas(this.width, this.height);
+        canvas2 = s.createCanvas(this.width, this.height);
         canvas2.parent('connect-four-holder');
 
         // reset game properties
         gameOver = false;
+        reportedBug = false;
         token = 'O';
         this.previousPlayerUuid = '';
         s.clearTable();
@@ -125,8 +156,11 @@ export class CombineFourComponent implements OnInit, OnDestroy {
         s.textSize(this.textSize);
         s.fill(255, 0, 0); // red
         s.rect(this.buttonStartX, this.buttonStartY, this.buttonWidth, this.buttonHeight);
+        s.fill(125, 125, 125); // grey
+        s.rect(this.bugReportButtonStartX, this.bugReportButtonStartY, this.bugReportButtonWidth, this.bugReportButtonHeight);
         s.fill(255); // white
         s.text('Restart', this.restartX, this.restartY);
+        s.text('Report bug', this.bugReportX, this.bugReportY);
         s.text('Next is: ', this.nextIsX, this.nextIsY);
 
         s.fill(255, 0, 0); // "next is" first color
@@ -234,14 +268,18 @@ export class CombineFourComponent implements OnInit, OnDestroy {
         this.restartX = this.gridWidth * 1.09;
         this.restartY = this.height * 0.918;
 
+        this.bugReportButtonWidth = this.height * 0.21;
+        this.bugReportButtonHeight = this.height / 16;
+        this.bugReportButtonStartX = this.gridWidth * 1.055;
+        this.bugReportButtonStartY = this.height * 0.755;
+        this.bugReportX = this.gridWidth * 1.065;
+        this.bugReportY = this.height * 0.8;
+
         this.endMessageRedX = this.gridWidth * 1.08;
         this.endMessageYellowX = this.gridWidth * 1.05;
         this.endMessageY = this.height / 6;
 
         this.textSize = this.height / 26;
-      };
-
-      s.debug = () => {
       };
 
     };

@@ -4,6 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
 import {MineSweeperComponent} from './mine-sweeper/mine-sweeper.component';
 import {CombineFourComponent} from './combine-four/combine-four.component';
+import {BugReportHttpService} from './bug-report-http.service';
 
 const appRoutes: Routes = [
   {path: '', component: DashboardComponent},
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     MineSweeperComponent,
     CombineFourComponent,
   ],
+  providers: [BugReportHttpService]
 })
 export class ProcessingModule {
 }
