@@ -2,8 +2,8 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {User} from '../models/user';
 import {StoreService} from '../../store.service';
 import {Extension} from '../models/extension';
-import {takeUntil} from 'rxjs/internal/operators';
-import {Subject} from 'rxjs/index';
+import {Subject} from 'rxjs/internal/Subject';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-twitch-row',

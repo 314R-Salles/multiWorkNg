@@ -1,16 +1,17 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TwitchHttpService} from '../twitch-http-service';
 import {User} from '../models/user';
-import {mergeMap} from 'rxjs/operators';
 import {updateStreamUrls, updateVideoUrl} from '../streamUtils';
 import {Video} from '../models/video';
 import {oc} from 'ts-optchain';
 import {setExtensions, setLastRefreshTime, setLoggedUser, setSubscriptions} from '../twitch-store/twitch.actions';
 import {StoreService} from '../../store.service';
 import * as moment from 'moment';
-import {interval, Observable, Subject} from 'rxjs/index';
-import {map, takeUntil} from 'rxjs/internal/operators';
 import {environment} from '../../../environments/environment';
+import {Observable} from 'rxjs/internal/Observable';
+import {Subject} from 'rxjs/internal/Subject';
+import {map, mergeMap, takeUntil} from 'rxjs/operators';
+import {interval} from 'rxjs/internal/observable/interval';
 
 @Component({
   selector: 'app-twitch-section',

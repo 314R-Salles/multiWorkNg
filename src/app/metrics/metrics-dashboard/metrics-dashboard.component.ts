@@ -2,7 +2,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MetricsHttpService} from '../metrics-http.service';
 import {Bean} from '../models/bean';
 import {BeanPackagesPipe} from '../bean-packages.pipe';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-metrics-dashboard',

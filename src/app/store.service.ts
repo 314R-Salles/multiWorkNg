@@ -7,11 +7,11 @@ import {
   selectLoggedUser,
   selectSubscriptions
 } from './twitch/twitch-store/twitch.reducer';
-import {first, map} from 'rxjs/internal/operators';
-import {Observable} from 'rxjs/index';
 import {User} from './twitch/models/user';
 import * as moment from 'moment';
 import {Extension} from './twitch/models/extension';
+import {Observable} from 'rxjs/internal/Observable';
+import {first, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

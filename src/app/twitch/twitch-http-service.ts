@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from './models/user';
 import {Video} from './models/video';
-import {Observable} from 'rxjs/index';
 import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs/internal/Observable';
 
 @Injectable()
 export class TwitchHttpService {
