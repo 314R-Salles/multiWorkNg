@@ -3,7 +3,6 @@ import {TwitchHttpService} from '../twitch-http-service';
 import {User} from '../models/user';
 import {updateStreamUrls, updateVideoUrl} from '../streamUtils';
 import {Video} from '../models/video';
-import {oc} from 'ts-optchain';
 import {setExtensions, setLastRefreshTime, setLoggedUser, setSubscriptions} from '../twitch-store/twitch.actions';
 import {StoreService} from '../../store.service';
 import * as moment from 'moment';
@@ -87,7 +86,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
   displayPlayer(user: User) {
     this.displayedUser = null;
     this.previousVideos = null;
-    if (oc(this.displayedStreamer).userId() === user.userId) {
+    if (this.displayedStreamer?.userId === user.userId) {
       this.displayedStreamer = null;
     } else {
       this.displayedStreamer = user;
@@ -105,7 +104,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
   }
 
   isUserSelected(user: User) {
-    return [oc(this.displayedUser).userId(), oc(this.displayedStreamer).userId()].includes(user.userId);
+    return [this.displayedUser?.userId, this.displayedStreamer?.userId].includes(user.userId);
   }
 
   refreshSubscriptions() {

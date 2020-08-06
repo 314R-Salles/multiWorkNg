@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-header-menu',
   templateUrl: './header-menu.component.html',
-  styleUrls: ['./header-menu.component.css']
+  styleUrls: ['./header-menu.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderMenuComponent {
 

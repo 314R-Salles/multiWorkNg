@@ -4,12 +4,18 @@
   align-items: center;
   justify-content: space-around;
   height: var(--header-menu);
-
   background: darkgrey;
 
 }
 
-
 .header-menu a {
+  text-decoration: none;
+}
+
+.mat-menu-content {
+  background-color: darkgrey !important;
+}
+
+.mat-menu-content  a {
   text-decoration: none;
 }
