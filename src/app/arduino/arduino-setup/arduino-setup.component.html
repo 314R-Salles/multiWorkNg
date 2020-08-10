@@ -1,0 +1,36 @@
+<p>
+  Nothing really Arduino related for now.
+  Save State button download a json file with the content of the ngrx store.
+  You can then reload that file later to fill the store again.
+</p>
+<p>This and the cdkDrag directive from angular material.</p>
+<p>
+  <button (click)="saveState()"> Save State</button>
+  Or upload one:
+  <input type="file" id="file_upload" (input)="loadState()">
+</p>
+
+<p>
+  <select name="action" id="action" [(ngModel)]="action">
+    <option value="add">Add</option>
+    <option value="remove">Remove</option>
+  </select>
+  a
+  <select name="color" id="color" [(ngModel)]="color">
+    <option *ngFor="let color of colors | keyvalue" [value]="color.value">{{color.value}}</option>
+  </select>
+
+  <select name="item" id="item" [(ngModel)]="item">
+    <option *ngFor="let item of types | keyvalue" [value]="item.value">{{item.value}}</option>
+  </select>
+
+  <button (click)="editElement()"> Go</button>
+</p>
+<div>
+  <div *ngFor="let element of elements" cdkDrag
+       (cdkDragReleased)="onDragReleased(element, $event)"
+       class="free-position"
+       [cdkDragFreeDragPosition]="{x: element.xPos, y: element.yPos}">
+    <img src='assets/{{element.color}}-{{element.type}}-{{element.active}}.gif'>
+  </div>
+</div>

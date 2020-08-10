@@ -24,7 +24,7 @@ import {AppInitializerService} from './app-initializer.service';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({twitchState: twitchReducer}),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),

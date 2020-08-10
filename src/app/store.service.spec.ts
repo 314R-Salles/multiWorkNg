@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import {TwitchStoreService} from './twitch/twitch-store/twitch-store.service';
 
-import { StoreService } from './store.service';
 
 describe('StoreService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: StoreService = TestBed.get(StoreService);
+    const service: TwitchStoreService = TestBed.get(TwitchStoreService);
     expect(service).toBeTruthy();
   });
 });

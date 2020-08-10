@@ -4,9 +4,7 @@ import {Bean} from './models/bean';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/internal/Observable';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MetricsHttpService {
   BASE_API = environment.JAVA_API;
   ACTUATORS_API = '/actuators';

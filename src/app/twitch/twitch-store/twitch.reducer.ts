@@ -4,10 +4,6 @@ import {User} from '../models/user';
 import * as moment from 'moment';
 import {Extension} from '../models/extension';
 
-export interface AppState {
-  twitchState: TwitchState;
-}
-
 export interface TwitchState {
   loggedUser: User;
   subscriptions: User[];
@@ -34,7 +30,7 @@ export function twitchReducer(state: TwitchState, action: Action) {
   return _twitchReducer(state, action);
 }
 
-export const selectTwitchState = (state: AppState) => state.twitchState;
+export const selectTwitchState = (state: any) => state.twitch.twitchState;
 
 export const selectLoggedUser = createSelector(
   selectTwitchState,

@@ -4,13 +4,13 @@ import {User} from '../models/user';
 import {updateStreamUrls, updateVideoUrl} from '../streamUtils';
 import {Video} from '../models/video';
 import {setExtensions, setLastRefreshTime, setLoggedUser, setSubscriptions} from '../twitch-store/twitch.actions';
-import {StoreService} from '../../store.service';
 import * as moment from 'moment';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs/internal/Observable';
 import {Subject} from 'rxjs/internal/Subject';
 import {map, mergeMap, takeUntil} from 'rxjs/operators';
 import {interval} from 'rxjs/internal/observable/interval';
+import {TwitchStoreService} from '../twitch-store/twitch-store.service';
 
 @Component({
   selector: 'app-twitch-section',
@@ -32,7 +32,7 @@ export class TwitchSectionComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<any>();
 
   constructor(private twitchService: TwitchHttpService,
-              private storeService: StoreService) {
+              private storeService: TwitchStoreService) {
   }
 
   ngOnInit() {

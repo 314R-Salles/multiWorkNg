@@ -8,11 +8,11 @@ import {environment} from '../../../environments/environment';
 export class DashboardService {
 
   BASE_API = environment.JAVA_API;
-  TWITCH_API = '/home';
+  HOME_API = '/home';
   API_URL: string;
 
   constructor(private http: HttpClient) {
-    this.API_URL = this.BASE_API + this.TWITCH_API;
+    this.API_URL = this.BASE_API + this.HOME_API;
   }
 
   getHomeVideos() {

@@ -7,6 +7,9 @@ import {VideoRowComponent} from './previous-videos-table/video-row/video-row.com
 import {TwitchPlayerComponent} from './twitch-player/twitch-player.component';
 import {RouterModule, Routes} from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
+import {StoreModule} from '@ngrx/store';
+import {twitchReducer} from './twitch-store/twitch.reducer';
+import {TwitchStoreService} from './twitch-store/twitch-store.service';
 
 
 const appRoutes: Routes = [
@@ -17,9 +20,11 @@ const appRoutes: Routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(appRoutes),
+    StoreModule.forFeature('twitch', {twitchState: twitchReducer}),
   ],
   providers: [
     TwitchHttpService,
+    TwitchStoreService,
   ],
   declarations: [
     TwitchSectionComponent,

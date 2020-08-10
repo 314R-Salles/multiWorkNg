@@ -1,9 +1,9 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {User} from '../models/user';
-import {StoreService} from '../../store.service';
 import {Extension} from '../models/extension';
 import {Subject} from 'rxjs/internal/Subject';
 import {takeUntil} from 'rxjs/operators';
+import {TwitchStoreService} from '../twitch-store/twitch-store.service';
 
 @Component({
   selector: 'app-twitch-row',
@@ -18,7 +18,7 @@ export class TwitchRowComponent implements OnInit, OnDestroy {
   extensions: Extension[];
   destroy$ = new Subject<any>();
 
-  constructor(private storeService: StoreService) {
+  constructor(private storeService: TwitchStoreService) {
   }
 
   ngOnInit() {

@@ -9,6 +9,7 @@ const appRoutes: Routes = [
   {path: 'twitch', loadChildren: () => import('./twitch/twitch.module').then(m => m.TwitchModule)},
   {path: 'processing', loadChildren: () => import('./processing/processing.module').then(m => m.ProcessingModule)},
   {path: 'pocs', loadChildren: () => import('./pocs/pocs.module').then(m => m.PocsModule)},
+  {path: 'arduino', loadChildren: () => import('./arduino/arduino.module').then(m => m.ArduinoModule)},
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 

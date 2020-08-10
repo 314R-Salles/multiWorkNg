@@ -18,6 +18,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDividerModule,
     MatChipsModule,
     MatMenuModule,
+    DragDropModule,
   ],
   exports: [
     MatCheckboxModule,
@@ -61,6 +63,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDividerModule,
     MatChipsModule,
     MatMenuModule,
+    DragDropModule,
   ],
   declarations: []
 })

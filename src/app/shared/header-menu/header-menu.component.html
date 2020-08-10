@@ -3,17 +3,22 @@
   <a routerLink="home" routerLinkActive="active">Home</a>
   <a routerLink="twitch" routerLinkActive="active">Twitch</a>
   <a routerLink="processing" routerLinkActive="active">Processing</a>
+  <a [matMenuTriggerFor]="arduinoMenu"> Arduino </a>
+  <a [matMenuTriggerFor]="pocsMenu"> PoCs </a>
 
-  <a [matMenuTriggerFor]="menu"> PoCs </a>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <a routerLink="metrics" routerLinkActive="active">Metrics</a>
-    </button>
-    <button mat-menu-item>
-      <a routerLink="pocs" routerLinkActive="active">Spring cloud config</a>
-    </button>
-    <button mat-menu-item>
-      <a href="{{SWAGGER_URL}}" target="_blank">Swagger</a>
-    </button>
-  </mat-menu>
 </div>
+
+
+<mat-menu #pocsMenu="matMenu">
+  <a mat-menu-item routerLink="metrics" routerLinkActive="active">Metrics </a>
+  <a mat-menu-item routerLink="pocs" routerLinkActive="active">Spring cloud config </a>
+  <a mat-menu-item href="{{SWAGGER_URL}}" target="_blank">Swagger </a>
+</mat-menu>
+
+<mat-menu #arduinoMenu="matMenu">
+  <button mat-menu-item disabled>
+    <span>Requires local java backend / arduino</span>
+  </button>
+  <a mat-menu-item routerLink="arduino/setup" routerLinkActive="active">Setup </a>
+  <a mat-menu-item routerLink="arduino/interact" routerLinkActive="active">Interact </a>
+</mat-menu>

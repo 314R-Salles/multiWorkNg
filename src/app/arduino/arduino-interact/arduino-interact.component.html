@@ -1,0 +1,9 @@
+<div>
+  <div *ngFor="let element of elements" cdkDrag
+       [cdkDragDisabled]="true"
+       class="free-position"
+       [cdkDragFreeDragPosition]="{x: element.xPos, y: element.yPos}">
+    <img draggable="false" src='assets/{{element.color}}-{{element.type}}-{{element.active}}.gif'>
+  </div>
+
+</div>
