@@ -79,7 +79,8 @@ export class ArduinoSetupComponent implements OnInit, OnDestroy {
 
       const fileName = 'circuit.json';
 
-      const fileToSave = new Blob([JSON.stringify(this.state)], {
+      // JSON.stringify(this.state, null, 2) donne un json formatté.
+      const fileToSave = new Blob([JSON.stringify(this.state, null, 2)], {
         type: 'application/json',
       });
 

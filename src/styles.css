@@ -9,10 +9,13 @@
 }
 
 body {
-  height: 100vh;
-  width: 100vw;
   margin: 0 !important;
-  overflow: hidden;
+  /*overflow: hidden;*/
+}
+
+/*for components that should fit on a single screen*/
+.component-container {
+  height: calc(100vh - var(--header-menu));
 }
 
 @media screen and (max-width: 600px), screen and (max-height: 600px) {
