@@ -10,6 +10,7 @@ const appRoutes: Routes = [
   {path: 'processing', loadChildren: () => import('./processing/processing.module').then(m => m.ProcessingModule)},
   {path: 'pocs', loadChildren: () => import('./pocs/pocs.module').then(m => m.PocsModule)},
   {path: 'webdesign', loadChildren: () => import('./web-design/web-design.module').then(m => m.WebDesignModule)},
+  {path: 'game', loadChildren: () => import('./games/games.module').then(m => m.GamesModule)},
   {path: 'arduino', loadChildren: () => import('./arduino/arduino.module').then(m => m.ArduinoModule)},
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];

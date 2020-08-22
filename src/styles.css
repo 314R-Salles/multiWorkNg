@@ -18,6 +18,13 @@ body {
   height: calc(100vh - var(--header-menu));
 }
 
+.snackbar {
+  background-color: palevioletred;
+  width: 10%;
+  height: 90%;
+}
+
+
 @media screen and (max-width: 600px), screen and (max-height: 600px) {
   body {
     overflow: auto;

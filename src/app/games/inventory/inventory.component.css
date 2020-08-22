@@ -1,0 +1,38 @@
+/*L'inventaire est une ligne avec plusieurs cases, contenant ou non un objet.*/
+/*on peut cliquer sur les objets pour activer/désactiver, ou ouvrir un menu avec plus d'options*/
+/*On va éviter pour l'instant de faire un inventaire qui peut défiler*/
+#inventory {
+  display: flex;
+  flex-direction: column;
+}
+
+.inventory-button {
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  border: 3px solid transparent;
+  outline: none;
+  background-image: url('assets/game_files/items/inventory.png');
+  background-size: contain;
+}
+
+.inventory-button:hover {
+  border: 3px solid red;
+}
+
+.inventory-button-active {
+  border: 3px solid blue;
+}
+
+.inventory-item-background {
+  width: 100%;
+  height: 100%;
+
+}
+
+
+.inventory-item-image {
+  width: 100%;
+  height: 100%;
+}

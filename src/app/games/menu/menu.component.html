@@ -1,0 +1,19 @@
+<h1>A game?</h1>
+
+
+<div class="component" style="display:flex; justify-content: space-between">
+
+  <div class="menu" style="display: flex;flex-direction: column">
+    <div (click)="displayInstructions()">Instructions</div>
+    <div (click)="displayLevels()">Levels</div>
+    <div (click)="displayExtra()">Extra</div>
+  </div>
+
+  <div class="panel">
+    <app-instructions *ngIf="instructionPanel"></app-instructions>
+    <app-level-selection *ngIf="levels"></app-level-selection>
+    <app-extra *ngIf="extra"></app-extra>
+
+  </div>
+
+</div>
