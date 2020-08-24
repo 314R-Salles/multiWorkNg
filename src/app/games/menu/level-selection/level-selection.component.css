@@ -1,0 +1,23 @@
+.title {
+  height: 10%;
+}
+
+.component {
+  height: 80%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.menu {
+  width: 100%;
+
+}
+
+.menu > img {
+  width: 15%;
+  border: 3px solid transparent;
+}
+
+.menu > img:hover {
+  border: 3px solid red;
+}

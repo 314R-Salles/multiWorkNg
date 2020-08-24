@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-instructions',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructionsComponent implements OnInit {
 
-  constructor() { }
+  pageNumber = 1;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
+  pageUp() {
+    return this.pageNumber < 5 ? this.pageNumber++ : this.pageNumber;
+  }
+
+  pageDown() {
+    return this.pageNumber > 1 ? this.pageNumber-- : this.pageNumber;
+  }
 }

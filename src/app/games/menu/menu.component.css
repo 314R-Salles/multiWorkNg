@@ -1,0 +1,26 @@
+.title {
+  height: 10%;
+}
+
+.component {
+  height: 80%;
+}
+
+.menu {
+  width: 40%;
+}
+
+.menu > div {
+  padding: 5px;
+  border: 1px solid transparent;
+}
+
+.menu > div:hover {
+  border: 1px solid darkgray;
+  background-color: lightgrey;
+  border-radius: 8px;
+}
+
+.panel {
+  width: 40%;
+}

@@ -1,1 +1,87 @@
-<p>instructions works!</p>
+<div style="height: 100%; border: 3px solid purple;">
+  <div class="title">Instructions</div>
+  <div class="component" style="display:flex; border: 3px solid red;">
+    <div class="menu"
+         style="display: flex; flex-wrap: wrap; justify-content:flex-start; align-items:center;border: 3px solid blue;">
+      <div class="page" *ngIf="pageNumber === 1">
+        <div>
+          <p>This is more or less a point and click puzzle game I guess. </p>
+          <p>Each level consists of a background and items you can pick and add to your inventory.</p>
+          <p>You then use these items to find clues to unlock the door to the next level</p>
+        </div>
+
+        <div>
+          <p>Why is this game special (it's not)</p>
+          <p>But you'll have to download files, upload others, use text editors, and maybe other softwares, like
+            audacity or gimp</p>
+          <p>It all depends on what kind of trick i can think of.</p>
+        </div>
+      </div>
+      <div class="page" *ngIf="pageNumber === 2">
+        <div style="display: flex; align-items: center">
+          <div>But downloading and opening random files is scawy</div>
+          <img style="width:50px"
+               src="assets/game_files/ui/cheems.gif">
+        </div>
+        <p>Sure it is. And you probably shouldn't do that. So if you don't trust me, just leave. I can only promise i'm
+          not doing anything harmful.</p>
+        <div style="display: flex; align-items: center">
+          <div>You can go back to Twitter and give all permissions over your account to totally random and suspicious
+            people, but it's fine
+            because they tell you what your account is worth, or who your Twitter Crush is, and this is so cool.</div>
+          <img style="width: 50px;" src="https://cdn.discordapp.com/emojis/658793253495373825.gif?v=1">
+        </div>
+
+      </div>
+      <div class="page" *ngIf="pageNumber === 3">
+        <p>Files you might be using on this website : </p>
+        <p>Json files: This is litteraly a text file and can be edited as one. It looks like this </p>
+        <pre><code>
+          {{ '{' }}
+             "id": "id value",
+             "password": "password value"
+          }
+        </code></pre>
+        <p> You can think of it as a box (an object), delimited by  {{ '{' }} and }, that contains smaller boxes
+          (fields, or other objects). </p>
+        <p> Here we have a json object that contains two fields, an id which value is "id value", and a password, which
+          value is "password value"</p>
+        <p> I don't think we need more details on these for now.</p>
+        <p> I'll think of mp3 and jpeg puzzles later</p>
+      </div>
+      <div class="page" *ngIf="pageNumber === 4">
+        About cookies.
+        There is no login system on this part of the website, meaning that i can't really save your progress.
+        But... I can use a cookie (this is just a bit of text), to save a key that represents the last level you
+        reached.
+        So if you leave your browser and come back, by reading the cookie, i can tell where you stopped last time.
+
+      </div>
+      <div class="page" *ngIf="pageNumber === 5">
+        There might be some more information on the puzzles in the Extra menu.
+      </div>
+
+      <div class="bottom">
+        <div style="display: flex;">
+          <div style="width:30px;"></div>
+          <i class="fa fa-toggle-left" (click)="pageDown()"
+             [ngClass]="{'inactive':pageNumber<2}"
+          ></i>
+          <div style="width:30px;"></div>
+          <i class="fa fa-toggle-right" (click)="pageUp()"
+             [ngClass]="{'inactive':pageNumber>4}"
+          ></i>
+          <div style="width:30px;"></div>
+        </div>
+        <div> {{pageNumber}}
+          <div style="width:30px;"></div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
