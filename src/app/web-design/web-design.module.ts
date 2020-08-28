@@ -5,7 +5,9 @@ import {RouterModule, Routes} from '@angular/router';
 import { YoutubeComponent } from './youtube/youtube.component';
 
 const appRoutes: Routes = [
-  {path: '', component: YoutubeComponent},
+  {path: 'youtube', component: YoutubeComponent},
+  {path: 'bandcamp', component: BandcampComponent},
+  {path: '', redirectTo: 'bandcamp'},
 ];
 
 @NgModule({

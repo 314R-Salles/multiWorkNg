@@ -1,11 +1,67 @@
-<h1>Youtube integration</h1>
+<div style="display: flex; align-items: baseline">
+  <h1 style="padding-right: 30px;">Youtube integration</h1>
+  > <span style="cursor: pointer" routerLink="/webdesign/bandcamp">Bandcamp integration</span>
+</div>
+<p>This page uses Youtube API, meaning most of the data is loaded from youtube, and not hardcoded in the website</p>
 <p>Follow button</p>
-
-
 <iframe
   style="position: static; top: 0px; width: 200px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 48px;"
   src="https://www.youtube.com/subscribe_embed?usegapi=1&amp;channel=xXMilkychanXx&amp;layout=full"></iframe>
 
-UC8aqrd64EoFHLjbQtEXFf_w <br>
-Milkychan<br>
-https://www.youtube.com/c/Milkychan<br>
+<hr>
+
+<br>
+9 last uploads, with 2 filtered keyword : dwagonsong, crossfade
+<div class="flex-row">
+  <mat-grid-list cols="3" rowHeight="7.5vw" class="container">
+    <mat-grid-tile
+      *ngFor="let tile of videos;"
+      [colspan]=1 [rowspan]=1
+      (click)="setPlayerUrl(tile.snippet.resourceId.videoId)"
+    >
+      <img style="max-height:100%;" src={{tile.snippet.thumbnails.medium.url}}>
+      <div class="content">
+        <div class="text">{{tile.snippet.title}}</div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <iframe *ngIf="playerUrl" style="border: 0; width: 40vw; height: 22.5vw;"
+          [src]="playerUrl"
+          seamless>
+  </iframe>
+  <div *ngIf="!playerUrl" style="border: 0; width: 40vw; height: 22.5vw;">
+    <!--    that's an empty container the size of the embedded player-->
+  </div>
+</div>
+
+
+<hr>
+List of featured channels: Loading banner images randomly results in 403 errors?
+<br><br>
+<div class="flex-row">
+  <mat-grid-list cols="3" rowHeight="7.5vw" class="container">
+    <mat-grid-tile
+      *ngFor="let tile of linkedChannels;"
+      [colspan]=1 [rowspan]=1
+    >
+      <a class="content-youtube-card" target="_blank" href="{{getYoutubeChannelUrl(tile.snippet)}}">
+        <img style="height:70%; border-radius: 50%;"
+             src={{tile.snippet.thumbnails.medium.url}}>
+        <div style="display: flex; flex-direction: column; height: 80%">
+          <div [ngClass]="{'longTitle': tile.snippet.title.length > 15,'shortTitle': tile.snippet.title.length <= 15 }">
+            {{tile.snippet.title}}
+          </div>
+          <hr style="width: 80%">
+          <div style="height: 100%">
+            {{tile.snippet.description}}
+          </div>
+        </div>
+      </a>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+
+<br><br><br>
+<hr>

@@ -1,0 +1,94 @@
+.container {
+  width: 40vw;
+  cursor: pointer;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.content {
+  opacity: 0;
+  font-size: 0.9vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*color: #1cc97e;*/
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 13.3vw;
+  height: 7.5vw;
+
+  -webkit-transition: all 400ms ease-out;
+  -moz-transition: all 400ms ease-out;
+  -o-transition: all 400ms ease-out;
+  -ms-transition: all 400ms ease-out;
+  transition: all 400ms ease-out;
+  text-align: center;
+}
+
+.content:hover {
+  opacity: 1;
+}
+
+.content .text {
+  height: 0;
+  opacity: 1;
+  transition-delay: 0s;
+  transition-duration: 0.5s;
+}
+
+.content:hover .text {
+  opacity: 1;
+  transform: translateY(2vw);
+  -webkit-transform: translateY(2vw);
+}
+
+.content-youtube-card {
+  text-decoration: none;
+  background-color: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.7vw;
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  color: #1cc97e;
+  /*color: #ffffff;*/
+  /*border: red solid 3px;*/
+  border-radius: 0.5vw;
+
+  width: 18vw;
+  max-width: 18vw;
+  height: 7.5vw;
+
+}
+
+.content-youtube-card:hover{
+  background-color: #2e4438;
+}
+
+
+.content-youtube-card > img {
+  border: #2e4438 inset 5px;
+}
+
+/*.content-youtube-card > img:hover {*/
+/*  border: #2e4438 outset 5px;*/
+/*}*/
+
+.longTitle {
+  align-self: flex-end;
+  font-size: 0.65vw;
+  padding-right: 10px;
+  height: 1.72vw;
+}
+
+.shortTitle {
+  align-self: flex-end;
+  font-size: 1vw;
+  padding-right: 10px;
+  height: 1.72vw;
+}
