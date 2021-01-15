@@ -1,10 +1,4 @@
 export class YoutubeChannel {
-  snippet: Snippet;
-  contentDetails: ContentDetails;
-  statistics: Statistics;
-}
-
-export class Snippet {
   title;
   description;
   customUrl;
@@ -12,31 +6,22 @@ export class Snippet {
   thumbnails;
   defaultLanguage;
   country;
-}
 
-export class ContentDetails {
-  relatedPlaylists: RelatedPlaylists;
-}
+  uploads;
 
-export class RelatedPlaylists {
-  uploads: string;
-}
+  viewCount;
+  subscriberCount;
+  videoCount;
 
-export class Statistics {
-  viewCount: number;
-  subscriberCount: number;
-  videoCount: number;
-}
+  hints;
+  image;
 
-export class ChannelSettings {
-  defaultTab: string;
-  description: string;
-  featuredChannelsTitle: string;
-  featuredChannelsUrls: string[];
-  keywords: string;
-  profileColor: string;
-  title: string;
-  trackingAnalyticsAccountId: string;
-  unsubscribedTrailer: string;
-}
+  defaultTab;
+  featuredChannelsTitle;
 
+  featuredChannelsUrls;
+  keywords;
+  profileColor;
+  trackingAnalyticsAccountId;
+  unsubscribedTrailer;
+}

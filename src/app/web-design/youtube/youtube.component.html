@@ -1,6 +1,8 @@
 <div style="display: flex; align-items: baseline">
   <h1 style="padding-right: 30px;">Youtube integration</h1>
+  > <span style="cursor: pointer" routerLink="/webdesign/twitch">Twitch integration</span>
   > <span style="cursor: pointer" routerLink="/webdesign/bandcamp">Bandcamp integration</span>
+  > <span style="cursor: pointer" routerLink="/webdesign/youtube2">Youtube 2 integration</span>
 </div>
 <p>This page uses Youtube API, meaning most of the data is loaded from youtube, and not hardcoded in the website</p>
 <p>Follow button</p>
@@ -15,13 +17,13 @@
 <div class="flex-row">
   <mat-grid-list cols="3" rowHeight="7.5vw" class="container">
     <mat-grid-tile
-      *ngFor="let tile of videos;"
+      *ngFor="let tile of filteredVideos;"
       [colspan]=1 [rowspan]=1
-      (click)="setPlayerUrl(tile.snippet.resourceId.videoId)"
+      (click)="setPlayerUrl(tile.id)"
     >
-      <img style="max-height:100%;" src={{tile.snippet.thumbnails.medium.url}}>
+      <img style="max-height:100%;" src={{tile.thumbnails.medium.url}}>
       <div class="content">
-        <div class="text">{{tile.snippet.title}}</div>
+        <div class="text">{{tile.title}}</div>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
@@ -45,23 +47,44 @@ List of featured channels: Loading banner images randomly results in 403 errors?
       *ngFor="let tile of linkedChannels;"
       [colspan]=1 [rowspan]=1
     >
-      <a class="content-youtube-card" target="_blank" href="{{getYoutubeChannelUrl(tile.snippet)}}">
+      <a class="content-youtube-card" target="_blank" href="{{getYoutubeChannelUrl(tile)}}">
         <img style="height:70%; border-radius: 50%;"
-             src={{tile.snippet.thumbnails.medium.url}}>
+             src={{tile.thumbnails.medium.url}}>
         <div style="display: flex; flex-direction: column; height: 80%">
-          <div [ngClass]="{'longTitle': tile.snippet.title.length > 15,'shortTitle': tile.snippet.title.length <= 15 }">
-            {{tile.snippet.title}}
+          <div [ngClass]="{'longTitle': tile.title.length > 15,'shortTitle': tile.title.length <= 15 }">
+            {{tile.title}}
           </div>
           <hr style="width: 80%">
           <div style="height: 100%">
-            {{tile.snippet.description}}
+            {{tile.description}}
           </div>
         </div>
       </a>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+<hr>
+Player + upload playlist.
+<br><br>
 
-
+<!--<iframe *ngIf="playerUrl" style="border: 0; width: 40vw; height: 22.5vw;"-->
+<!--        [src]="playerUrl"-->
+<!--        seamless>-->
+<!--</iframe>-->
 <br><br><br>
 <hr>
+<br><br><br>
+
+
+<!-- Affichage des tags en vrac-->
+
+
+<!--<strong> tag list </strong>-->
+<!--<br>-->
+<!--<span *ngFor="let tag of tags"> {{tag}}</span>-->
+
+<!--<br>-->
+
+<!--<strong> tag list </strong>-->
+<!--<br>-->
+<!--<span *ngFor="let tag of tags2"> {{tag}}</span>-->

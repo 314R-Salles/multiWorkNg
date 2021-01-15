@@ -17,7 +17,7 @@ const appRoutes: Routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(appRoutes),
-    StoreModule.forFeature('arduino', {arduinoState: arduinoReducer})
+    StoreModule.forFeature('arduino', arduinoReducer)
   ],
   declarations: [
     ArduinoSetupComponent,

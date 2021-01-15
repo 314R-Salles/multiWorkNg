@@ -34,7 +34,7 @@ export function gameReducer(state: GameState, action: Action) {
   return _gameReducer(state, action);
 }
 
-export const selectGameState = (state: any) => state.game.gameState;
+export const selectGameState = (state: any) => state.game;
 
 export const selectRedCard = createSelector(
   selectGameState,

@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(appRoutes),
-    StoreModule.forFeature('twitch', {twitchState: twitchReducer}),
+    StoreModule.forFeature('twitch', twitchReducer),
   ],
   providers: [
     TwitchHttpService,

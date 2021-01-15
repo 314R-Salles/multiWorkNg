@@ -1,0 +1,8 @@
+Générer un certificat auto signé
+
+openssl req -new -x509 -newkey rsa:2048 -sha256 -nodes -keyout localhost.key -days 3560 -out localhost.crt -config certificate.cnf
+
+Définir une commande ng qui utilise le certificat.
+"start": "ng serve --ssl --ssl-key d:\\certificates\\localhost.key  --ssl-cert d:\\certificates\localhost.crt"
+
+Plus de détails sur https://medium.com/@richardr39/using-angular-cli-to-serve-over-https-locally-70dab07417c8

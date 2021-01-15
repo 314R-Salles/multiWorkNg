@@ -1,0 +1,41 @@
+<div class="component-container">
+
+  <div style="height: 10%;">
+
+    <div style="display: flex; align-items: baseline">
+      <h1 style="padding-right: 30px;">Twitch integration</h1>
+      > <span style="cursor: pointer" routerLink="/webdesign/youtube">Youtube integration</span>
+      > <span style="cursor: pointer" routerLink="/webdesign/youtube2">Youtube2 integration</span>
+      > <span style="cursor: pointer" routerLink="/webdesign/bandcamp">Bandcamp integration</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="player">
+      <iframe
+        [src]="iframeUrl"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        scrolling="no"
+        allowfullscreen="true">
+      </iframe>
+    </div>
+
+    <div class="chat">
+      <!--Le chat doit avoir une width de 320px pour s'afficher proprement-->
+      <iframe src="https://www.twitch.tv/embed/milkyrisa/chat?parent=localhost"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              scrolling="no">
+      </iframe>
+    </div>
+  </div>
+  <div class="footer">
+    Il faut, des colonnes qui disparaissent en fonction de la taille de l'écran
+    chat trop petit = inutile
+
+  </div>
+</div>
+

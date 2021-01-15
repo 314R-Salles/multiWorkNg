@@ -18,6 +18,10 @@ export class TwitchPlayerComponent implements OnInit, OnChanges {
     this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       `https://player.twitch.tv/?channel=${this.streamer.username}&parent=psalles.ovh`);
   }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+  //     `https://player.twitch.tv/?channel=${this.streamer.username}&parent=localhost`);
+  // }
 
   ngOnInit() {
   }

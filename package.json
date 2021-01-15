@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "local": "ng serve -o",
+    "local_https": "ng serve --ssl --ssl-key D:\\programmation\\localhost.key  --ssl-cert D:\\programmation\\localhost.crt",
     "ng": "ng",
     "build": "ng build --prod",
     "test": "ng test",

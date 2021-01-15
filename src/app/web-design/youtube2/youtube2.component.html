@@ -1,0 +1,34 @@
+<div style="display: flex; align-items: baseline">
+  <h1 style="padding-right: 30px;">Youtube integration</h1>
+  > <span style="cursor: pointer" routerLink="/webdesign/twitch">Twitch integration</span>
+  > <span style="cursor: pointer" routerLink="/webdesign/bandcamp">Bandcamp integration</span>
+  > <span style="cursor: pointer" routerLink="/webdesign/youtube">Youtube integration</span>
+</div>
+
+
+<br>
+<div class="video-player">
+
+  <iframe *ngIf="playerUrl" style="border: 0; width: 60vw; height: 33.3vw;"
+          [src]="playerUrl"
+          seamless>
+  </iframe>
+
+  <div *ngIf="!playerUrl" style="border: 0;  width: 60vw; height: 33.3vw;">
+    <!--    that's an empty container the size of the embedded player-->
+  </div>
+
+  <div class="flex-column video-picker">
+    <div class="video-row" *ngFor="let tile of allVideos;"
+         (click)="setPlayerUrl(tile.id)">
+      <div class="video-img">
+        <img style="max-height:100%;" src={{tile.thumbnails.medium.url}}>
+      </div>
+      <div class="video-info">
+        <div class="text">{{tile.title}}</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(appRoutes),
-    StoreModule.forFeature('game', {gameState: gameReducer})
+    StoreModule.forFeature('game', gameReducer)
   ],
   declarations: [
     Game1Component,

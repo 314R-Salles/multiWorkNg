@@ -30,7 +30,7 @@ export function twitchReducer(state: TwitchState, action: Action) {
   return _twitchReducer(state, action);
 }
 
-export const selectTwitchState = (state: any) => state.twitch.twitchState;
+export const selectTwitchState = (state: any) => state.twitch;
 
 export const selectLoggedUser = createSelector(
   selectTwitchState,

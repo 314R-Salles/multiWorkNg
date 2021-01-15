@@ -30,7 +30,7 @@ export function arduinoReducer(state: ArduinoState, action: Action) {
   return _arduinoReducer(state, action);
 }
 
-export const selectArduinoState = (state: any) => state.arduino.arduinoState;
+export const selectArduinoState = (state: any) => state.arduino;
 
 export const selectElements = createSelector(
   selectArduinoState,
