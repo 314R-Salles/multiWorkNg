@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
-import {YoutubeVideo} from '../youtube/youtubeVideo.model';
+import {YoutubeVideo} from '../../web-design/youtube/youtubeVideo.model';
 
 @Component({
   selector: 'app-youtube',

@@ -10,6 +10,7 @@ const appRoutes: Routes = [
   {path: 'webdesign', loadChildren: () => import('./web-design/web-design.module').then(m => m.WebDesignModule)},
   {path: 'game', loadChildren: () => import('./games/games.module').then(m => m.GamesModule)},
   {path: 'arduino', loadChildren: () => import('./arduino/arduino.module').then(m => m.ArduinoModule)},
+  {path: 'hidden/iframes', loadChildren: () => import('./iframes/iframes.module').then(m => m.IframesModule)},
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
