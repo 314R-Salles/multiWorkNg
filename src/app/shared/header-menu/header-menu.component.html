@@ -1,24 +1,12 @@
 <div class="header-menu">
-
   <a routerLink="home" routerLinkActive="active">Home</a>
   <a routerLink="twitch" routerLinkActive="active">Twitch</a>
   <a routerLink="processing" routerLinkActive="active">Processing</a>
-  <a hidden [matMenuTriggerFor]="arduinoMenu"> Arduino </a>
-  <a [matMenuTriggerFor]="pocsMenu"> <span class="material-icons">menu</span> </a>
-
+  <a [matMenuTriggerFor]="menu"> <span class="material-icons">menu</span> </a>
 </div>
 
-
-<mat-menu #pocsMenu="matMenu">
-    <a hidden mat-menu-item routerLink="webdesign" routerLinkActive="active">WebDesign</a>
-  <!--  <a mat-menu-item routerLink="game/menu" routerLinkActive="active">Game</a>-->
+<mat-menu #menu="matMenu">
   <a mat-menu-item href="{{SWAGGER_URL}}" target="_blank">Swagger </a>
 </mat-menu>
 
-<mat-menu #arduinoMenu="matMenu">
-  <button mat-menu-item disabled>
-    <span>Requires local java backend / arduino</span>
-  </button>
-  <a mat-menu-item routerLink="arduino/setup" routerLinkActive="active">Setup </a>
-  <a mat-menu-item routerLink="arduino/interact" routerLinkActive="active">Interact </a>
-</mat-menu>
+

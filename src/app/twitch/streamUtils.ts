@@ -1,5 +1,5 @@
 import {User} from './models/user';
-import {Video} from './models/video';
+import * as moment from 'moment';
 
 export function updateStreamUrls(users: User[]): User[] {
   return users.map(user => {
@@ -7,25 +7,14 @@ export function updateStreamUrls(users: User[]): User[] {
         ...user,
         live: !!user.live ? {
           ...user.live,
-          updatedThumbnailUrl: user.live.thumbnailUrl
+          isRecent: moment.utc().isBefore(moment(user.live.startTime).add(15, 'minutes')),
+          updatedThumbnailUrl: user.live?.thumbnailUrl
             .replace('{width}', '750')
             .replace('{height}', '500'),
-          updatedGameIconUrl: user.live.gameIconUrl
-            .replace('{width}', '300')
+          updatedGameIconUrl: user.live?.gameIconUrl
+            .replace('{width}', '250')
             .replace('{height}', '300')
         } : null,
-      };
-    }
-  );
-}
-
-export function updateVideoUrl(videos: Video[]): Video[] {
-  return videos.map(video => {
-      return {
-        ...video,
-        updatedThumbnailUrl: video.thumbnailUrl
-          .replace('%{width}', '750')
-          .replace('%{height}', '500')
       };
     }
   );

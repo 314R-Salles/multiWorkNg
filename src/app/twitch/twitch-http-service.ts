@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {User} from './models/user';
-import {Video} from './models/video';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs/internal/Observable';
 
@@ -22,14 +21,6 @@ export class TwitchHttpService {
 
   retrieveCompleteSubscriptions(): Observable<User[]> {
     return this.http.get<User[]>(this.API_URL + '/streams');
-  }
-
-  getVideos(streamerId: string): Observable<Video[]> {
-    return this.http.get<Video[]>(this.API_URL + '/user/' + streamerId + '/videos');
-  }
-
-  getPanelExtensions(): Observable<any> {
-    return this.http.get<any>(this.API_URL + '/extensions');
   }
 
   logout() {

@@ -210,11 +210,11 @@ export class CombineFourComponent implements OnInit, OnDestroy {
           d2 += plateau[y - i][x + i];
         }
 
-        if ((h + v + d1 + d2).includes('OOOO')) {
+        if ((`${h}.${v}.${d1}.${d2}`).includes('OOOO')) {
           s.text('Yellow wins', this.endMessageYellowX, this.endMessageY);
           gameOver = true;
         }
-        if ((h + v + d1 + d2).includes('XXXX')) {
+        if ((`${h}.${v}.${d1}.${d2}`).includes('XXXX')) {
           s.text('Red wins', this.endMessageRedX, this.endMessageY);
           gameOver = true;
         }

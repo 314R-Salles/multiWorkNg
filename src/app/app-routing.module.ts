@@ -8,15 +8,12 @@ const appRoutes: Routes = [
   {path: 'twitch', loadChildren: () => import('./twitch/twitch.module').then(m => m.TwitchModule)},
   {path: 'processing', loadChildren: () => import('./processing/processing.module').then(m => m.ProcessingModule)},
   {path: 'webdesign', loadChildren: () => import('./web-design/web-design.module').then(m => m.WebDesignModule)},
-  {path: 'game', loadChildren: () => import('./games/games.module').then(m => m.GamesModule)},
-  {path: 'arduino', loadChildren: () => import('./arduino/arduino.module').then(m => m.ArduinoModule)},
-  {path: 'hidden/iframes', loadChildren: () => import('./iframes/iframes.module').then(m => m.IframesModule)},
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes, { useHash: true, relativeLinkResolution: 'legacy' })
+    RouterModule.forRoot(appRoutes, {useHash: true, relativeLinkResolution: 'legacy'})
   ],
   exports: [
     RouterModule

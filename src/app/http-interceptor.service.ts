@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
+import {catchError} from 'rxjs/operators';
+import {throwError} from 'rxjs/internal/observable/throwError';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,13 @@ export class HttpInterceptorService implements HttpInterceptor {
       newHeaders = newHeaders.append('twitch', token);
     }
     const authReq = req.clone({headers: newHeaders});
-    return next.handle(authReq);
+    return next.handle(authReq).pipe(catchError((error: HttpErrorResponse) => {
+      if (error.status === 401 && error.url.includes('twitch')) {
+        sessionStorage.removeItem('twitch');
+        location.reload();
+      }
+      return throwError(error);
+    }));
   }
+
 }

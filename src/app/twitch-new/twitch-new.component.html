@@ -1,0 +1,52 @@
+<div class="component-container" style="overflow:hidden; background: #250434">
+  <app-progress-bar
+    hidden
+    [step]="1"
+    [steps]="5"
+    [value]="minutesToNow$ | async"
+    [colors]="['#4ab549', '#ffdf3a', '#ffb246', '#ca3b3b', '#843434']"
+    (trigger)="refreshSubscriptions()">
+  </app-progress-bar>
+  <div class="centered" *ngIf="!token">
+    <a href={{url}}> <i style="font-size: 30vw;" class="material-icons">login</i></a>
+  </div>
+
+  <div *ngIf="data" [ngClass]="{'centered3' : displayedStreamer, 'centered2' : !displayedStreamer}"
+       style="height: 66%;">
+    <div class="streamList" [ngClass]="{'fade-in2' : !displayedStreamer, 'fade-out' : displayedStreamer}">
+      <div class="tile" *ngFor="let user of data" (click)="displayPlayer(user)">
+        <span *ngIf="user.live?.isRecent" class="recent-icon material-icons">fiber_new</span>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-evenly">
+          <img class="profileImage" [src]="user.profileImage">
+          <span style="color: white">{{user.displayName}}</span>
+          <div [ngClass]="{'dark' : user.live, 'light': !user.live}"></div>
+        </div>
+        <div class="tile-bg-placeholder2" *ngIf="user.live">
+          <img *ngIf="user.live.updatedGameIconUrl" class="category-bg2" [src]="user.live.updatedGameIconUrl">
+          <span class="white"><strong>{{user.live.title}}</strong></span>
+        </div>
+        <div class="tile-bg-placeholder2" *ngIf="!user.live">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; height: 100%">
+    <div class="streamShortList" [ngClass]="{'fade-in' : displayedStreamer, 'fade-out' : !displayedStreamer}">
+      <div class="shortTile" *ngFor="let user of data" (click)="displayPlayer(user)">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-evenly">
+          <div [ngClass]="{'dark' : user.live, 'light': !user.live}"></div>
+          <img class="shortProfileImage" [src]="user.profileImage">
+          <span class="white">{{user.displayName}}</span>
+          <span class="white" style="text-align: center;">{{user?.live?.gameName}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="player" [ngClass]="{'fade-in' : displayedStreamer}" *ngIf="displayedStreamer">
+      <app-twitch-player [streamer]="displayedStreamer"></app-twitch-player>
+    </div>
+
+  </div>
+</div>
+

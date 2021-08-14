@@ -8,7 +8,6 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 })
 export class BandcampComponent implements OnInit {
 
-
   tiles;
   playerUrl: SafeResourceUrl;
 
