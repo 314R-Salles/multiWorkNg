@@ -1,15 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {environment} from '../../environments/environment';
-import {User} from '../twitch/models/user';
+import {User} from '../../shared/models/user';
 import * as moment from 'moment';
 import {Observable} from 'rxjs/internal/Observable';
 import {Subject} from 'rxjs/internal/Subject';
-import {TwitchHttpService} from '../twitch/twitch-http-service';
-import {TwitchStoreService} from '../twitch/twitch-store/twitch-store.service';
+import {TwitchHttpService} from '../twitch-http-service';
 import {map, mergeMap, takeUntil} from 'rxjs/operators';
 import {interval} from 'rxjs/internal/observable/interval';
-import {setLastRefreshTime, setLoggedUser, setSubscriptions} from '../twitch/twitch-store/twitch.actions';
-import {updateStreamUrls} from '../twitch/streamUtils';
+import {setLastRefreshTime, setLoggedUser, setSubscriptions} from '../../store/twitch-store/twitch.actions';
+import {updateStreamUrls} from '../streamUtils';
+import {environment} from '../../../environments/environment';
+import {AppStoreService} from '../../store/app-store.service';
 
 @Component({
   selector: 'app-twitch-new',
@@ -29,7 +29,7 @@ export class TwitchNewComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<any>();
 
   constructor(private twitchService: TwitchHttpService,
-              private storeService: TwitchStoreService) {
+              private storeService: AppStoreService) {
   }
 
   ngOnInit() {
@@ -45,7 +45,7 @@ export class TwitchNewComponent implements OnInit, OnDestroy {
         ));
     });
 
-    this.token = sessionStorage.getItem('twitch');
+    this.token = localStorage.getItem('twitch');
 
     if (this.token) {
       this.twitchService.retrieveMyUser()
@@ -90,7 +90,7 @@ export class TwitchNewComponent implements OnInit, OnDestroy {
 
   logout() {
     this.twitchService.logout().subscribe(_ => {
-        sessionStorage.removeItem('twitch');
+        localStorage.removeItem('twitch');
         location.reload();
       }
     );

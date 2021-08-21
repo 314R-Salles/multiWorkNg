@@ -1,0 +1,18 @@
+<div cdkDrag id="player" *ngIf="playlistId && playlistVideos?.length" [ngStyle]="{'width': width ? '300px':'30px'}">
+  <div class="column">
+    <button (click)="previousVideo()"><span class="material-icons">navigate_before</span></button>
+    <button (click)="playVideo()"><span class="material-icons">play_arrow</span></button>
+    <button (click)="pauseVideo()"><span class="material-icons">pause</span></button>
+    <button (click)="nextVideo()"><span class="material-icons">navigate_next</span></button>
+    <button *ngIf="width" (click)="hide()"><span class="material-icons">hide_image</span></button>
+    <button *ngIf="!width" (click)="show()"><span class="material-icons">image</span></button>
+  </div>
+  <div>
+    <youtube-player [ngStyle]="{'display': width ? 'block':'none'}"
+                    [playerVars]="{ 'autoplay': 1, 'controls': 0, modestbranding: 1}"
+                    [width]="width" [height]="height"
+                    [videoId]="currentVideo?.videoId"
+                    (stateChange)="onStateChange()"
+    ></youtube-player>
+  </div>
+</div>

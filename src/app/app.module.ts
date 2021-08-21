@@ -10,11 +10,16 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HomePageComponent} from './home-page/home-page.component';
 import {HttpInterceptorService} from './http-interceptor.service';
 import {AppInitializerService} from './app-initializer.service';
+import {CustomYoutubePlayerComponent} from './custom-youtube-player/custom-youtube-player.component';
+import {AppStoreService} from './store/app-store.service';
+import {reducers} from './store/app.reducer';
+import {YouTubePlayerModule} from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
+    CustomYoutubePlayerComponent,
   ],
   imports: [
     SharedModule,
@@ -22,12 +27,14 @@ import {AppInitializerService} from './app-initializer.service';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
     }),
+    YouTubePlayerModule,
   ],
   providers: [
+    AppStoreService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
     {
       provide: APP_INITIALIZER,

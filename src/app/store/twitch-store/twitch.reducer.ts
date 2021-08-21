@@ -1,6 +1,6 @@
 import {Action, createReducer, createSelector, on} from '@ngrx/store';
 import {setLastRefreshTime, setLoggedUser, setSubscriptions} from './twitch.actions';
-import {User} from '../models/user';
+import {User} from '../../shared/models/user';
 import * as moment from 'moment';
 
 export interface TwitchState {

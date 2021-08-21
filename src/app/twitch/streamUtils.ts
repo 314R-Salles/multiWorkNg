@@ -1,4 +1,4 @@
-import {User} from './models/user';
+import {User} from '../shared/models/user';
 import * as moment from 'moment';
 
 export function updateStreamUrls(users: User[]): User[] {

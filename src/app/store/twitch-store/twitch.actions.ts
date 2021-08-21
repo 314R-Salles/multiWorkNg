@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {User} from '../models/user';
+import {User} from '../../shared/models/user';
 
 export const setLoggedUser = createAction('[User] set logged user', props<{ user: User }>());
 export const setSubscriptions = createAction('[Subscriptions] set subscriptions', props<{ subscriptions: User[] }>());
