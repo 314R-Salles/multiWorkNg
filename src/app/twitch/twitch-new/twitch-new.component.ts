@@ -26,7 +26,7 @@ export class TwitchNewComponent implements OnInit, OnDestroy {
   lastRefresh: moment.Moment;
   minutesToNow$: Observable<number>;
 
-  destroy$ = new Subject<any>();
+  destroy$ = new Subject<void>();
 
   constructor(private twitchService: TwitchHttpService,
               private storeService: AppStoreService) {
