@@ -14,12 +14,17 @@ import {CustomYoutubePlayerComponent} from './custom-youtube-player/custom-youtu
 import {AppStoreService} from './store/app-store.service';
 import {reducers} from './store/app.reducer';
 import {YouTubePlayerModule} from '@angular/youtube-player';
+import { BookmarkComponent } from './bookmark/bookmark.component';
+import { BookmarkListComponent } from './bookmark-list/bookmark-list.component';
+import {GoogleLoginProvider, SocialAuthServiceConfig} from 'angularx-social-login';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     CustomYoutubePlayerComponent,
+    BookmarkComponent,
+    BookmarkListComponent,
   ],
   imports: [
     SharedModule,
@@ -35,6 +40,20 @@ import {YouTubePlayerModule} from '@angular/youtube-player';
   ],
   providers: [
     AppStoreService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '506210682916-um12taceoo96u9salmfrcrfdjvk276l7.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
     {
       provide: APP_INITIALIZER,
