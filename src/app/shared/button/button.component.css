@@ -1,0 +1,38 @@
+.image {
+  z-index: 10;
+  width: 50%;
+  pointer-events: none;
+}
+
+.octagonWrap {
+  position: absolute;
+  -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+}
+
+.octagon {
+  display: flex;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+}
+
+
+.dark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(0deg, rgba(0, 254, 255, 0.4) 0%, rgba(0, 254, 255, 0.4) 100%),
+  linear-gradient(0deg, rgba(0, 254, 255, 0.2) 0%, rgba(0, 245, 255, 0) 15%),
+  radial-gradient(circle, rgba(0, 245, 255, 0) 55%, rgba(0, 245, 255, 1) 100%);
+  width: 100%;
+  height: 100%;
+}
+
+
+.dark:hover {
+  background: linear-gradient(360deg, rgba(0, 254, 255, 0.1) 0%, rgba(0, 245, 255, 0) 70%),
+  radial-gradient(circle, rgba(0, 245, 255, 0) 55%, rgb(0, 245, 255) 100%),
+  linear-gradient(0deg, rgb(234 255 255) 0%, rgba(0, 245, 255, 0) 10%),
+  radial-gradient(circle, rgba(0, 245, 255, 0) 40%, rgb(255 255 255) 100%)
+}

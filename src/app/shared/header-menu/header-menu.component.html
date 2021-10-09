@@ -1,12 +1,15 @@
 <div class="header-menu">
-  <a routerLink="home" routerLinkActive="active">Home</a>
-  <a routerLink="twitch" routerLinkActive="active">Twitch</a>
-  <a routerLink="processing" routerLinkActive="active">Processing</a>
-  <a [matMenuTriggerFor]="menu"> <span class="material-icons">menu</span> </a>
+  <div
+    style=" height: 100%; min-width: 70px;width: 9vw; display: inline-flex; align-items: center; justify-content: center;">
+    <a routerLink="home" routerLinkActive="active"><span class="material-icons">home
+</span></a></div>
+  <div style="display: flex;height: 100%; min-width: 200px;width: 18vw; text-align: center;align-items: center;">
+    {{meteo.timezone}}
+    <img style="height: 100%;" matTooltip={{meteo?.current.weather[0]?.description}}
+         matTooltipClass="tooltipClass"
+         src={{meteo?.current.weather[0]?.icon}}>{{meteo.current.temp}}°C
+  </div>
 </div>
 
-<mat-menu #menu="matMenu">
-  <a mat-menu-item href="{{SWAGGER_URL}}" target="_blank">Swagger </a>
-</mat-menu>
 
 

@@ -14,17 +14,20 @@ import {CustomYoutubePlayerComponent} from './custom-youtube-player/custom-youtu
 import {AppStoreService} from './store/app-store.service';
 import {reducers} from './store/app.reducer';
 import {YouTubePlayerModule} from '@angular/youtube-player';
-import { BookmarkComponent } from './bookmark/bookmark.component';
-import { BookmarkListComponent } from './bookmark-list/bookmark-list.component';
-import {GoogleLoginProvider, SocialAuthServiceConfig} from 'angularx-social-login';
+import {GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule} from 'angularx-social-login';
+import {ReactiveFormsModule} from '@angular/forms';
+import {GoogleLoginDialogComponent} from './google-login-dialog/google-login-dialog.component';
+import {YoutubeMenuComponent} from './youtube-menu/youtube-menu.component';
+import {RerMenuComponent} from './rer-menu/rer-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     CustomYoutubePlayerComponent,
-    BookmarkComponent,
-    BookmarkListComponent,
+    GoogleLoginDialogComponent,
+    YoutubeMenuComponent,
+    RerMenuComponent,
   ],
   imports: [
     SharedModule,
@@ -32,6 +35,8 @@ import {GoogleLoginProvider, SocialAuthServiceConfig} from 'angularx-social-logi
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    SocialLoginModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -48,8 +53,8 @@ import {GoogleLoginProvider, SocialAuthServiceConfig} from 'angularx-social-logi
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '506210682916-um12taceoo96u9salmfrcrfdjvk276l7.apps.googleusercontent.com'
-            )
+              '506210682916-um12taceoo96u9salmfrcrfdjvk276l7.apps.googleusercontent.com',
+              {scope: 'https://www.googleapis.com/auth/youtube.readonly'})
           }
         ]
       } as SocialAuthServiceConfig,

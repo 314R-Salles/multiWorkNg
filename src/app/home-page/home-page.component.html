@@ -1,50 +1,23 @@
-<div>
-  Youtube playlist url <input [(ngModel)]="playlistUrl" (change)="updateUrl()">
-</div>
-<!--<div id="g_id_onload"-->
-<!--     data-client_id="506210682916-um12taceoo96u9salmfrcrfdjvk276l7.apps.googleusercontent.com"-->
-<!--     data-callback="handleCredentialResponse">-->
-<!--</div>-->
-<!--<script>-->
-<!--  function handleCredentialResponse(response) {-->
-<!--    // decodeJwtResponse() is a custom function defined by you-->
-<!--    // to decode the credential response.-->
-<!--    console.log("res: " +response);-->
-<!--  }-->
-<!--</script>-->
-<!--<div class="g_id_signin"-->
-<!--     data-type="standard"-->
-<!--     data-size="large"-->
-<!--     data-theme="outline"-->
-<!--     data-text="sign_in_with"-->
-<!--     data-shape="rectangular"-->
-<!--     data-logo_alignment="left">-->
-<!--</div>-->
 
-
-<div class="container" style="max-width: 550px">
-  <h2 class="text-center mb-5">Angular Login with Google</h2>
-
-  <div *ngIf="isLoggedin === false">
-    <div>
-      <button type="button" (click)="loginWithGoogle()" class="btn btn-danger">Login with Google</button>
-    </div>
+<div class="footer">
+  <div>
+    <a
+      href="https://docs.google.com/document/d/1IgnZucdU3wq-uBSizw7HuPyaE6IARr1bERef5x3M268/edit#heading=h.kqa87xz22s4m"
+      target="_blank">Project documentation <i class="material-icons">lock</i></a>
   </div>
-
-  <div *ngIf="isLoggedin === true">
-    <div class="form-group">
-      <label>First Name</label>
-      <input type="text" class="form-control" [value]="socialUser.firstName" id="firstname" readonly>
-    </div>
-    <div class="form-group">
-      <label>Last Name</label>
-      <input type="text" class="form-control" [value]="socialUser.lastName" id="lastname" readonly>
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="text" class="form-control" [value]="socialUser.email" id="email" readonly>
-    </div>
-
-    <button type="button" (click)="logOut()" class="btn btn-primary">Log Out</button>
+  <div>
+    <a href="https://fonts.google.com/icons" target="_blank"> Material icons list</a>
+  </div>
+  <div>
+    <a href="https://aceship.github.io/AN-EN-Tags/akhr.html" target="_blank"> Arknight recruitment guide</a>
+  </div>
+  <div>
+    <a href={{SLR_DAILY_URL}} target="_blank"> SLR daily chapter</a>
+  </div>
+  <div>
+    <a href="https://bennettfeely.com/clippy/" target="_blank"> clip path generator</a>
+  </div>
+  <div>
+    <a href="https://cssgradient.io/" target="_blank"> gradient generator</a>
   </div>
 </div>

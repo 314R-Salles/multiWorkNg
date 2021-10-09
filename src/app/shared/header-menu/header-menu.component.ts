@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {environment} from '../../../environments/environment';
+import {AppStoreService} from '../../store/app-store.service';
+import {Meteo} from '../../localization/geolocation-http.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -9,9 +10,10 @@ import {environment} from '../../../environments/environment';
 })
 export class HeaderMenuComponent {
 
-  SWAGGER_URL = environment.SWAGGER_URL;
+  meteo: Meteo;
 
-  constructor() {
+  constructor(private appStoreService: AppStoreService) {
+    this.appStoreService.getMeteo().subscribe(meteo => this.meteo = meteo);
   }
 
 }

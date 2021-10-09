@@ -1,0 +1,8 @@
+<div class="centered"  [ngClass]="{'fade-in' : currentRoute === 'home', 'fade-out' : currentRoute !== 'home'}">
+  <div *ngFor="let button of buttons;let index = index;">
+    <app-button style="position: absolute;"
+                [ngStyle]="{'left.vw': 6.5*(index%5), 'top.vw': 3.9*(( math.floor(index/5) +index)%2) + 7.8* math.floor(index/5)}"
+                [size]="button.size" [img]="button.img" [redirect]="button.redirect"
+                [newTab]="button.newTab"></app-button>
+  </div>
+</div>

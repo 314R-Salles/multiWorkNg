@@ -1,0 +1,21 @@
+Without login, you can copy paste a playlist url here.
+<div>
+  Youtube playlist url <input [(ngModel)]="playlistUrl" (change)="updateUrl()">
+</div>
+
+<div class="container" style="max-width: 550px">
+  <div *ngIf="!token">
+    You can login and pick a playlist from your account (public / unlisted)
+    <button type="button" (click)="openModal()" class="btn btn-primary">Login</button>
+  </div>
+</div>
+
+<div *ngIf="playlists?.length" style="margin-top: 10px;margin-left: 50px">
+  Your playlists
+  <div
+    style="width: 200px; height:200px; overflow-y: scroll; background: azure;border: 1px solid rgba(111, 30, 42, 0.64);">
+    <div *ngFor="let playlist of playlists">
+      <div (click)="setPlaylist(playlist.id)" class="playlistItem">{{playlist.title}}</div>
+    </div>
+  </div>
+</div>

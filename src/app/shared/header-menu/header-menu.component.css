@@ -2,10 +2,9 @@
   display: flex;
   flex-flow: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: var(--header-menu);
   background: darkgrey;
-
 }
 
 .header-menu a {
@@ -16,6 +15,10 @@
   background-color: darkgrey !important;
 }
 
-.mat-menu-content  a {
+.mat-menu-content a {
   text-decoration: none;
+}
+
+.tooltipClass {
+  background: #137a7a;
 }

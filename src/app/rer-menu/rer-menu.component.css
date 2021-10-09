@@ -1,0 +1,123 @@
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  animation: fadeinTwitter 3s cubic-bezier(0.38, 0.83, 0.93, 1.1) forwards;
+}
+
+@keyframes fadeinTwitter {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  50% {
+    left: 0;
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+.rerState {
+  width: 50px;
+  text-align: center;
+  display: inline-block;
+}
+
+.rerState.problem {
+  background: rgb(207, 37, 66);
+  border: 2px solid rgb(111, 30, 42);
+}
+
+.rerState.warning {
+  background: rgb(234, 200, 69);
+  border: 2px solid rgb(196, 159, 0);
+}
+
+.rerState.normal {
+  background: rgb(126, 241, 92);
+  border: 2px solid rgb(42, 177, 0);
+}
+
+a:active {
+  color: unset;
+}
+
+.shortTile {
+  display: flex;
+  justify-content: flex-start;
+  min-height: 8%;
+  position: relative;
+  z-index: 2;
+  border-top: 3px solid rgb(82, 144, 205);
+  border-bottom: 3px solid rgb(82, 144, 205);
+  margin: 2px;
+}
+
+.shortTile:hover {
+  background: rgb(59, 74, 150);
+}
+
+.dark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(82, 144, 205, 0.3);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+
+.tweets {
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+.shortProfileImage {
+  width: 30px;
+  border-radius: 15px;
+}
+
+
+.white {
+  color: white;
+}
+
+@media (max-width: 1024px) {
+  .white {
+    display: none;
+  }
+}
+
+
+.tweets::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.tweets::-webkit-scrollbar-track {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.tweets::-webkit-scrollbar-thumb {
+  background: rgba(67, 67, 67, 0);
+  border-radius: 16px;
+  box-shadow: inset -2px 3px 9px 1px #a04993c9, inset 1px -3px 0px 0px rgb(0 0 0);
+}
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}

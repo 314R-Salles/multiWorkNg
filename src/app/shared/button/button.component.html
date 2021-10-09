@@ -1,0 +1,10 @@
+<div class="octagonWrap">
+  <div class='octagon'
+       [ngStyle]="{'width.vw':size, 'height.vw':size}">
+    <div class="dark" matRipple
+         (click)="click()"
+         [matRippleColor]="'rgba(116,255,255,0.4)'">
+    </div>
+    <img *ngIf="img" class="image" src={{img}}>
+  </div>
+</div>
