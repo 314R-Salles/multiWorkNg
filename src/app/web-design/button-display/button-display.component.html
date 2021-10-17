@@ -1,0 +1,27 @@
+<div *ngFor="let button of buttons;let index = index;">
+  <div class="octagonWrap"
+       [ngStyle]="{'left.vw': 6.5*(index%5), 'top.vw': 5 + 3.9*(( math.floor(index/5) +index)%2) + 7.8* math.floor(index/5)}">
+    <div class='octagon'
+         [ngStyle]="{'width.vw':button.size, 'height.vw':button.size}">
+      <div class="default" [ngClass]="{'newTab': button.newTab }" matRipple
+           (click)="0"
+           [matRippleColor]="'rgba(116,255,255,0.4)'">
+      </div>
+      <img *ngIf="button.img" class="image" src={{img}}>
+    </div>
+  </div>
+</div>
+
+<div *ngFor="let button of buttons;let index = index;">
+  <div class="octagonWrap"
+       [ngStyle]="{'left.vw': 35 + 6.5*(index%5), 'top.vw': 5 + 3.9*(( math.floor(index/5) +index)%2) + 7.8* math.floor(index/5)}">
+    <div class='octagon'
+         [ngStyle]="{'width.vw':button.size, 'height.vw':button.size}">
+      <div class="default2"
+           [ngStyle]="{background:'rgb('+0+' '+ (30 + 30*(index%5) +math.floor(index/5)*80) +' '+(255-50*(index%5))+')'}">
+      </div>
+      <span class="a">{{0}} {{30 + 30 * (index % 5) + math.floor(index / 5) * 80}} {{255 - 50 * (index % 5)}}</span>
+    </div>
+  </div>
+</div>
+

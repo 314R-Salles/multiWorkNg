@@ -11,6 +11,10 @@
   animation: fadeinTwitter 3s cubic-bezier(0.38, 0.83, 0.93, 1.1) forwards;
 }
 
+.title {
+  margin-bottom: 10px;
+}
+
 @keyframes fadeinTwitter {
   0% {
     left: 0;
@@ -30,7 +34,6 @@
 }
 
 .rerState {
-  width: 50px;
   text-align: center;
   display: inline-block;
 }
@@ -55,14 +58,16 @@ a:active {
 }
 
 .shortTile {
+  margin-right: 10px;
+  border-radius: 80px;
   display: flex;
   justify-content: flex-start;
-  min-height: 8%;
+  min-height: 20%;
   position: relative;
   z-index: 2;
   border-top: 3px solid rgb(82, 144, 205);
   border-bottom: 3px solid rgb(82, 144, 205);
-  margin: 2px;
+  margin-bottom: 20px;
 }
 
 .shortTile:hover {
@@ -70,6 +75,7 @@ a:active {
 }
 
 .dark {
+  border-radius: 80px;
   position: absolute;
   top: 0;
   right: 0;
@@ -77,6 +83,19 @@ a:active {
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+
+.dark2 {
+  /* border-radius: 80px; */
+  position: absolute;
+  bottom: 0;
+  /* right: 0; */
+  background: rgba(82, 144, 205, 0.3);
+  width: 100%;
+  height: 50px;
+  z-index: 0;
+  -webkit-mask: linear-gradient(to top, #fff, transparent);
+  mask: linear-gradient(to left, #fff, transparent);
 }
 
 
@@ -108,13 +127,13 @@ a:active {
 }
 
 .tweets::-webkit-scrollbar-track {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 0.1) 100%);
+  background: linear-gradient(0deg, rgba(0, 41, 255, 0.33) 0%, rgba(0, 49, 255, 0.16) 100%)
 }
 
 .tweets::-webkit-scrollbar-thumb {
   background: rgba(67, 67, 67, 0);
   border-radius: 16px;
-  box-shadow: inset -2px 3px 9px 1px #a04993c9, inset 1px -3px 0px 0px rgb(0 0 0);
+  box-shadow: inset -6px 0px 21px 1px #749aff, inset 0px 0px 0px 0px rgba(0, 33, 255, 0.89)
 }
 
 a, a:hover, a:focus, a:active {
