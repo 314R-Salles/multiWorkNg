@@ -1,12 +1,12 @@
-<p>Follow button</p>
-data-band-id
-<iframe scrolling="no" style="border: 0;width: 100%;height: 50px;"
-        src="https://bandcamp.com/band_follow_button_deluxe/1258394256"></iframe>
-<br>
-<iframe scrolling="no" style="border: 0;width: 100%;height: 50px;"
-        src="https://bandcamp.com/band_follow_button_deluxe/2410704917"></iframe>
+<!--<p>Follow button</p>-->
+<!--data-band-id-->
+<!--<iframe scrolling="no" style="border: 0;width: 100%;height: 50px;"-->
+<!--        src="https://bandcamp.com/band_follow_button_deluxe/1258394256"></iframe>-->
+<!--<br>-->
+<!--<iframe scrolling="no" style="border: 0;width: 100%;height: 50px;"-->
+<!--        src="https://bandcamp.com/band_follow_button_deluxe/2410704917"></iframe>-->
 
-<p>The list of albums (pictures, id for loading the music player) is hardcoded.</p>
+<!--<p>The list of albums (pictures, id for loading the music player) is hardcoded.</p>-->
 
 <div class="flex-row">
   <mat-grid-list cols="3" rowHeight="13.3vw" class="container">
@@ -22,11 +22,12 @@ data-band-id
     </mat-grid-tile>
   </mat-grid-list>
 
-  <iframe *ngIf="playerUrl" style="border: 0; width: 40vw; height: 40vw;"
+<!--  bandcamp max width at 700px-->
+  <iframe *ngIf="playerUrl" style="border: 0; width:40vw; height: 40vw; max-width: 700px; max-height: 700px"
           [src]="playerUrl"
           seamless>
   </iframe>
-  <div *ngIf="!playerUrl" style="border: 0; width: 40vw; height: 40vw;">
+  <div *ngIf="!playerUrl" style="border: 0; width: 40vw; height: 40vw; max-width: 700px; max-height: 700px">
     <!--    that's an empty container the size of the embedded player-->
   </div>
 </div>

@@ -19,6 +19,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {GoogleLoginDialogComponent} from './google-login-dialog/google-login-dialog.component';
 import {YoutubeMenuComponent} from './youtube-menu/youtube-menu.component';
 import {RerMenuComponent} from './rer-menu/rer-menu.component';
+import {BandcampNewComponent} from './bandcamp-new/bandcamp-new.component';
+import {BandcampNew2Component} from './bandcamp-new2/bandcamp-new2.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import {RerMenuComponent} from './rer-menu/rer-menu.component';
     GoogleLoginDialogComponent,
     YoutubeMenuComponent,
     RerMenuComponent,
+    BandcampNewComponent,
+    BandcampNew2Component,
   ],
   imports: [
     SharedModule,

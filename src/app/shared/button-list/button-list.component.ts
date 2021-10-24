@@ -57,7 +57,7 @@ export class ButtonListComponent {
         redirect: 'https://aceship.github.io/AN-EN-Tags/akhr.html',
         newTab: true
       },
-      {size: 12, img: '', text: '', redirect: 'home'},
+      {size: 12, img: 'assets/bandcamp.png', text: '', redirect: 'bandcamp'},
     ];
 
 

@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/internal/Observable';
 import * as moment from 'moment';
 import {map} from 'rxjs/operators';
 import {selectLastRefreshTime} from './twitch-store/twitch.reducer';
-import {selectGoogleToken, selectMeteo, selectPlaylistId} from './app.reducer';
+import {selectBandcampAlbumId, selectGoogleToken, selectMeteo, selectPlaylistId} from './app.reducer';
 import {Meteo} from '../localization/geolocation-http.service';
 
 @Injectable()
@@ -41,4 +41,9 @@ export class AppStoreService {
     );
   }
 
+  getBandcampAlbumId(): Observable<string> {
+    return this.store.pipe(
+      map((state) => selectBandcampAlbumId(state))
+    );
+  }
 }

@@ -3,6 +3,11 @@
     style=" height: 100%; min-width: 70px;width: 9vw; display: inline-flex; align-items: center; justify-content: center;">
     <a routerLink="home" routerLinkActive="active"><span class="material-icons">home
 </span></a></div>
+
+  <iframe *ngIf="playerUrl" style="border: 0; width: 300px; height: 41px; margin-top: -1px;"
+          [src]="playerUrl" seamless>
+  </iframe>
+
   <div style="display: flex;height: 100%; min-width: 200px;width: 18vw; text-align: center;align-items: center;">
     {{meteo?.timezone}}
     <img style="height: 100%;" matTooltip={{meteo?.current.weather[0]?.description}}

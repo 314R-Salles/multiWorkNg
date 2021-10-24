@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AppStoreService} from './store/app-store.service';
-import {savePlaylist, setGoogleToken, setMeteo} from './store/app.actions';
+import {savePlaylist, setBandcampAlbumId, setGoogleToken, setMeteo} from './store/app.actions';
 import {Geolocation, GeolocationHttpService} from './localization/geolocation-http.service';
 import {map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
@@ -41,6 +41,7 @@ export class AppInitializerService {
 
   setPlaylist() {
     this.appStoreService.dispatch(savePlaylist({youtubePlaylistId: localStorage.getItem('playlistId')}));
+    this.appStoreService.dispatch(setBandcampAlbumId({bandcampAlbumId: localStorage.getItem('bandcampAlbumId')}));
     this.appStoreService.dispatch(setGoogleToken({googleToken: localStorage.getItem('googleToken')}));
   }
 
