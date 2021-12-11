@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import p5 from 'p5';
 import * as Stomp from 'stompjs';
-import * as SockJS from 'sockjs-client';
 import * as uuid from 'uuid';
 import {environment} from '../../../environments/environment';
 import {BugReportHttpService} from '../bug-report-http.service';
+declare var SockJS: any;
 
 
 @Component({
