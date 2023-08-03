@@ -1,0 +1,19 @@
+<app-button (click)="click(button)"
+            [ngClass]="button.offset ? petal : ''" *ngFor="let button of buttonList, let index = index;"
+            style="position: absolute;"
+            [portrait]="portrait"
+            [parentId]="_number"
+            [id]="index"
+            [ngStyle]="{
+                'margin-left.vw': button.offset *  button.size*math.cos(index * math.PI/3 + math.PI/6),
+                'margin-top.vw': button.offset *  button.size*math.sin(index * math.PI/3 + math.PI/6),
+                'z-index': !!button.offset ? 0 : 100,
+                'opacity': 1
+
+                 }"
+            [size]="button.size"
+            [img]="button.img"
+            [text]="button.text"
+            [redirect]="button.redirect"
+            [newTab]="button.newTab">
+</app-button>

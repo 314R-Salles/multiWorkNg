@@ -1,11 +1,12 @@
 <div class="octagonWrap">
   <div class='octagon'
-       [ngStyle]="{'width.vw':size, 'height.vw':size}">
-    <div class="default" [ngClass]="{'newTab': newTab }" matRipple
+       [ngStyle]="!portrait ? {'width.vw':size, 'height.vw':size} : {'width.vh':size, 'height.vh':size}">
+    <div class="default" [ngClass]="{'newTab': newTab, 'empty': !redirect && !newTab  }" matRipple
          (click)="click()"
-         [matRippleColor]="'rgba(116,255,255,0.4)'">
+         [matRippleColor]="matRippleColor">
     </div>
     <img *ngIf="img" class="image" src={{img}}>
-    <span *ngIf="text" class="text" [innerHTML]="text"></span>
+    <app-ease-in-text class="text" [hidden]="!text" [text]=text></app-ease-in-text>
+    <!--    <span *ngIf="text" class="text" [innerHTML]="text"></span>-->
   </div>
 </div>

@@ -1,0 +1,19 @@
+<div class="tata" *ngFor="let button of buttons;let index = index;"
+     [ngStyle]="!portrait ? {'left.vw': -8.5, 'top.vw': -8.5, position: 'fixed'} : {'left.vh': (-15-left), 'top.vh': -8.7,position: 'fixed'}">
+  <app-button class="toto" style="position: absolute;" [portrait]="portrait"
+              *ngIf=" currentRoute === 'home' || (navigationId && navigationId !== 1)"
+              [ngStyle]="!portrait ?
+                {
+                'left.vw': offsetX*(index%11),
+                 'top.vw': offsetY*(( math.floor(index/11) +index)%2) + 2*offsetY* math.floor(index/11)
+                 }
+                 :
+               {
+                'left.vh':offsetX*(( math.floor(index/15) +index)%2) + 2*offsetX* math.floor(index/15) ,
+                 'top.vh': offsetY*(index%15)
+                 }"
+              [size]="button.size"
+              [img]="button.img"
+              [text]="button.text" [redirect]="button.redirect"
+              [newTab]="button.newTab"></app-button>
+</div>

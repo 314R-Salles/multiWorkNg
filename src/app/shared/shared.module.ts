@@ -7,6 +7,10 @@ import {FormsModule} from '@angular/forms';
 import {ProgressBarComponent} from './progress-bar/progress-bar.component';
 import {ButtonComponent} from './button/button.component';
 import {ButtonListComponent} from './button-list/button-list.component';
+import {ButtonList2Component} from './button-list2/button-list2.component';
+import { ButtonFlowerComponent } from './button-flower/button-flower.component';
+import {EaseInTextComponent} from '../ease-in-text/ease-in-text.component';
+import { DndDirective } from './dnd.directive';
 
 
 @NgModule({
@@ -15,6 +19,10 @@ import {ButtonListComponent} from './button-list/button-list.component';
     ProgressBarComponent,
     ButtonComponent,
     ButtonListComponent,
+    ButtonList2Component,
+    ButtonFlowerComponent,
+    EaseInTextComponent,
+    DndDirective,
   ],
   imports: [
     CommonModule,
@@ -31,6 +39,9 @@ import {ButtonListComponent} from './button-list/button-list.component';
     ProgressBarComponent,
     ButtonComponent,
     ButtonListComponent,
+    ButtonList2Component,
+    ButtonFlowerComponent,
+    EaseInTextComponent,
   ]
 })
 export class SharedModule {

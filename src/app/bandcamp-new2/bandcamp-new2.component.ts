@@ -60,45 +60,46 @@ export class BandcampNew2Component implements OnInit {
           },
         ]
       },
-      {
-        profilePicture: 'assets/album_covers/t/timo.jpg',
-        name: 'timo',
-        display: false,
-        titles: [
-          {
-            img: 'assets/album_covers/t/beyond_the_stars.jpg',
-            albumId: '428178153', title: 'Beyond the Stars'
-          },
-          {
-            img: 'assets/album_covers/t/eden_island.jpg',
-            albumId: '1469036157', title: 'Eden Island'
-          },
-          {
-            img: 'assets/album_covers/t/fearless_desire.jpg',
-            albumId: '3357392325', title: 'Fearless Desire'
-          },
-          {
-            img: 'assets/album_covers/t/fried_rice.jpg',
-            albumId: '3593092009', title: 'Fried Rice'
-          },
-          {
-            img: 'assets/album_covers/t/great_escape.jpg',
-            albumId: '2641956915', title: 'The Great Escape'
-          },
-          {
-            img: 'assets/album_covers/t/lueur_espoir.jpg',
-            albumId: '2937050238', title: 'Une Lueur d\'Espoir'
-          },
-          {
-            img: 'assets/album_covers/t/stereo_dream.jpg',
-            albumId: '4019979997', title: 'シューダイバーの夢 ～ STEREO DREAM ～'
-          },
-          {
-            img: 'assets/album_covers/t/touhou_collection.jpg',
-            albumId: '2711017636', title: '東方 Sound Collection Vol​.​1'
-          },
-        ]
-      }];
+      // {
+      //   profilePicture: 'assets/album_covers/t/timo.jpg',
+      //   name: 'timo',
+      //   display: false,
+      //   titles: [
+      //     {
+      //       img: 'assets/album_covers/t/beyond_the_stars.jpg',
+      //       albumId: '428178153', title: 'Beyond the Stars'
+      //     },
+      //     {
+      //       img: 'assets/album_covers/t/eden_island.jpg',
+      //       albumId: '1469036157', title: 'Eden Island'
+      //     },
+      //     {
+      //       img: 'assets/album_covers/t/fearless_desire.jpg',
+      //       albumId: '3357392325', title: 'Fearless Desire'
+      //     },
+      //     {
+      //       img: 'assets/album_covers/t/fried_rice.jpg',
+      //       albumId: '3593092009', title: 'Fried Rice'
+      //     },
+      //     {
+      //       img: 'assets/album_covers/t/great_escape.jpg',
+      //       albumId: '2641956915', title: 'The Great Escape'
+      //     },
+      //     {
+      //       img: 'assets/album_covers/t/lueur_espoir.jpg',
+      //       albumId: '2937050238', title: 'Une Lueur d\'Espoir'
+      //     },
+      //     {
+      //       img: 'assets/album_covers/t/stereo_dream.jpg',
+      //       albumId: '4019979997', title: 'シューダイバーの夢 ～ STEREO DREAM ～'
+      //     },
+      //     {
+      //       img: 'assets/album_covers/t/touhou_collection.jpg',
+      //       albumId: '2711017636', title: '東方 Sound Collection Vol​.​1'
+      //     },
+      //   ]
+      // }
+    ];
 
   }
 
@@ -120,6 +121,7 @@ export class BandcampNew2Component implements OnInit {
   setAsBackgroundMusic() {
     this.appStoreService.dispatch(setBandcampAlbumId({bandcampAlbumId: this.albumId}));
   }
+
   removePlayer() {
     this.appStoreService.dispatch(removeBandcampAlbumId());
   }

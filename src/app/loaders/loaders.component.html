@@ -1,0 +1,48 @@
+<button (click)="add()">Add</button>
+<br>
+Default project progress bar
+<br>
+
+<app-progress-bar
+  [step]="1"
+  [steps]="maxValue"
+  [value]="count"
+  [colors]="['#4ab549', '#ffdf3a', '#ffb246', '#ca3b3b', '#843434']"
+  (trigger)="reset()">
+</app-progress-bar>
+
+<br>
+loading bar with clip-path (means the whole bar is there, but cropped less and less as the progress increases.
+
+<div style="z-index:0;border: 3px solid rgb(9,9,9); background:rgb(9,9,9); width: 200px; height: 40px">
+  <div [ngStyle]="{'clip-path': clipPathValues[0] }"
+       style="z-index:1;  height: 40px;
+       background: linear-gradient(90deg, rgba(255,107,1,1) 0%, rgba(233,255,8,1) 18%, rgba(152,254,14,1) 35%, rgba(8,255,115,1) 54%, rgba(119,160,234,1) 73%, rgba(183,41,248,1) 86%, rgba(255,0,0,1) 100%);
+"></div>
+</div>
+
+<br>
+Same but with "funny" clip path values
+<div style="z-index:0;border: 3px solid rgb(9,9,9); background:rgb(9,9,9); width: 200px; height: 40px">
+  <div [ngStyle]="{'clip-path': clipPathValues[1] }"
+       style="background: linear-gradient(90deg, rgba(255,107,1,1) 0%, rgba(233,255,8,1) 18%, rgba(152,254,14,1) 35%, rgba(8,255,115,1) 54%, rgba(119,160,234,1) 73%, rgba(183,41,248,1) 86%, rgba(255,0,0,1) 100%);
+ height: 40px"></div>
+</div>
+<br>
+<div style="z-index:0;border: 3px solid rgb(9,9,9); background:rgb(9,9,9); width: 200px; height: 40px">
+  <div [ngStyle]="{'clip-path': clipPathValues[2] }"
+       style="background: linear-gradient(90deg, rgba(255,107,1,1) 0%, rgba(233,255,8,1) 18%, rgba(152,254,14,1) 35%, rgba(8,255,115,1) 54%, rgba(119,160,234,1) 73%, rgba(183,41,248,1) 86%, rgba(255,0,0,1) 100%);
+ height: 40px"></div>
+</div>
+<br>
+<div style="z-index:0;border: 3px solid rgb(9,9,9); background:rgb(9,9,9); width: 200px; height: 40px">
+  <div [ngStyle]="{'clip-path': clipPathValues[3] }"
+       style="background: linear-gradient(90deg, rgba(255,107,1,1) 0%, rgba(233,255,8,1) 18%, rgba(152,254,14,1) 35%, rgba(8,255,115,1) 54%, rgba(119,160,234,1) 73%, rgba(183,41,248,1) 86%, rgba(255,0,0,1) 100%);
+ height: 40px"></div>
+</div>
+<br>
+<div style="z-index:0;border: 3px solid rgb(9,9,9); background:rgb(9,9,9); width: 200px; height: 40px">
+  <div [ngStyle]="{'clip-path': clipPathValues[4] }"
+       style="background: linear-gradient(90deg, rgba(255,107,1,1) 0%, rgba(233,255,8,1) 18%, rgba(152,254,14,1) 35%, rgba(8,255,115,1) 54%, rgba(119,160,234,1) 73%, rgba(183,41,248,1) 86%, rgba(255,0,0,1) 100%);
+ height: 40px"></div>
+</div>

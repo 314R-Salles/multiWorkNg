@@ -1,0 +1,58 @@
+.centered {
+  position: fixed;
+  /*top: -8.5vw;*/
+  /*left: -8.5vw;*/
+}
+
+.top {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: var(--header-menu);
+  position: relative;
+  top: 0;
+}
+
+/*.fade-in {*/
+/*  animation: fadeinButtons 1.5s cubic-bezier(0.38, 0.83, 0.93, 1.1) forwards;*/
+/*}*/
+
+/*@keyframes fadeinButtons {*/
+/*  0% {*/
+/*    left: 15%;*/
+/*    opacity: 0;*/
+/*  }*/
+/*  50% {*/
+/*    left: 15%;*/
+/*    opacity: 0;*/
+/*  }*/
+/*  100% {*/
+/*    left: 23%;*/
+/*    opacity: 1;*/
+/*  }*/
+/*}*/
+
+
+/*.fade-out {*/
+/*  animation: fadeoutButtons 2s cubic-bezier(0.34, -0.1, 0.12, 0.99) forwards;*/
+/*}*/
+
+/*@keyframes fadeoutButtons {*/
+/*  0% {*/
+/*    left: 23%;*/
+/*    opacity: 1;*/
+/*  }*/
+/*  20% {*/
+/*    left: 15%;*/
+/*    opacity: 0;*/
+/*  }*/
+/*  99% {*/
+/*    left: 0;*/
+/*    opacity: 0;*/
+/*  }*/
+/*  100% {*/
+/*    left: -2000px;*/
+/*    opacity: 0;*/
+/*  }*/
+/*}*/

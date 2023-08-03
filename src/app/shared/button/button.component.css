@@ -12,7 +12,7 @@
 }
 
 .octagonWrap {
-  position: absolute;
+  /*position: absolute;*/
   -webkit-clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
   clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
@@ -48,6 +48,13 @@
   .newTab:hover {
     background: linear-gradient(
       204deg, rgb(255 255 255) 0%, rgba(0, 255, 190, 0.4) 100%), linear-gradient(
+      0deg, rgb(255 255 255) 0%, rgba(0, 245, 255, 0) 15%), radial-gradient(circle, rgba(0, 245, 255, 0) 55%, rgba(255, 0, 0, 0.59) 100%),
+    linear-gradient(360deg, rgb(255 255 255) 0%, rgba(0, 245, 255, 0) 70%)
+  }
+
+  .empty:hover {
+    background: linear-gradient(
+      204deg, rgb(255 255 255) 0%, rgb(73 92 87 / 48%) 100%), linear-gradient(
       0deg, rgb(255 255 255) 0%, rgba(0, 245, 255, 0) 15%), radial-gradient(circle, rgba(0, 245, 255, 0) 55%, rgba(255, 0, 0, 0.59) 100%),
     linear-gradient(360deg, rgb(255 255 255) 0%, rgba(0, 245, 255, 0) 70%)
   }

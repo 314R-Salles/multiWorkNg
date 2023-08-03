@@ -1,0 +1,32 @@
+.A {
+  width: 800px;
+  height: 600px;
+  border-radius: 10%;
+  background: red;
+}
+
+.segment {
+  height: 10px;width: 50px; background: #749aff;
+  box-shadow:  inset -1px -1px 0px 1px rgb(111 255 229 / 79%), inset 1px 0px 0px 0px rgb(0, 0, 0, 0)
+}
+
+.C {
+  width: 600px;
+  height: 200px;
+  border-radius: 50%;
+  background: blue;
+}
+
+.wrapper {
+  display:inline-block;
+  -webkit-clip-path: circle(120px at center);
+  clip-path: circle(120px at center);
+}
+
+.circle {
+  display:block;
+}
+
+.circle:hover {
+  cursor:move;
+}

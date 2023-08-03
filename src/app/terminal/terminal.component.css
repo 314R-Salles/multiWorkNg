@@ -1,0 +1,14 @@
+.border {
+  width: 10px;
+  height: 100px;
+  background: #749aff;
+  border: 3px solid rgb(64, 0, 75);
+
+}
+
+.screen {
+  /*clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);*/
+  width: 0vw;
+  height: 100px;
+  background: #abc2ff;
+}

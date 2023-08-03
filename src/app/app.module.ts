@@ -21,6 +21,10 @@ import {YoutubeMenuComponent} from './youtube-menu/youtube-menu.component';
 import {RerMenuComponent} from './rer-menu/rer-menu.component';
 import {BandcampNewComponent} from './bandcamp-new/bandcamp-new.component';
 import {BandcampNew2Component} from './bandcamp-new2/bandcamp-new2.component';
+import {LoadersComponent} from './loaders/loaders.component';
+import {EntryScreenComponent} from './entry-screen/entry-screen.component';
+import {Menu1Component} from './menu1/menu1.component';
+import {TerminalComponent} from './terminal/terminal.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,10 @@ import {BandcampNew2Component} from './bandcamp-new2/bandcamp-new2.component';
     RerMenuComponent,
     BandcampNewComponent,
     BandcampNew2Component,
+    LoadersComponent,
+    EntryScreenComponent,
+    Menu1Component,
+    TerminalComponent,
   ],
   imports: [
     SharedModule,
